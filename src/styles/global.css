@@ -1,0 +1,874 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #ffffff;            /* surface */
+  --surface: #f5f5f5;       /* surface-2 */
+  --surface-warm: #eeeeee;  /* hover state */
+  --fg: #111111;            /* primary - text and headings */
+  --fg-2: #333333;          /* secondary body text */
+  --muted: #949494;         /* muted text */
+  --meta: #a5b3a1;          /* secondary - accent color */
+  --border: #dedede;        /* border */
+  --border-soft: #cccccc;   /* border hover */
+  --accent: #a5b3a1;        /* secondary - accent color */
+  --accent-on: #111111;     /* text on accent */
+  --accent-hover: #94a390;  
+  --accent-active: #83927f;
+  --success: #16a34a;       /* success / secondary accent */
+  --warn: #d97706;
+  --danger: #dc2626;
+  
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 28px;
+  --text-3xl: 36px;
+  --text-4xl: 48px;
+
+  --leading-body: 1.62;
+  --leading-tight: 1.25;
+  --tracking-display: -0.025em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
+  --radius-pill: 9999px;
+
+  --elev-flat: none;
+  --elev-ring: 0 0 0 1px var(--border);
+  --elev-raised: 0 10px 30px rgba(17, 17, 17, 0.04);
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+
+  --motion-fast: 150ms;
+  --motion-base: 240ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  --container-max: 1040px;
+}
+
+/* Custom theme mapping for Tailwind v4 */
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Reset / Core Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  background-image: radial-gradient(var(--border) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Header Nav */
+header {
+  border-bottom: 1px solid var(--border);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.brand-logo svg {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--fg-2);
+  text-decoration: none;
+  transition: color var(--motion-fast) var(--ease-standard);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+/* Language Switcher */
+#lang-switcher, #lang-switcher-mobile {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--fg-2);
+  text-decoration: none;
+  transition: all var(--motion-fast) var(--ease-standard);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+}
+
+#lang-switcher:hover, #lang-switcher-mobile:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 3%, transparent);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--motion-fast) var(--ease-standard);
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--accent-on);
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.btn-primary:active {
+  background-color: var(--accent-active);
+  border-color: var(--accent-active);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--border);
+  color: var(--fg-2);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 3%, transparent);
+}
+
+/* Container Utility */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* Section Common */
+.section-padding {
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: var(--space-2);
+  letter-spacing: var(--tracking-display);
+}
+
+.section-subtitle {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  margin-bottom: var(--space-8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Hero Section */
+.hero-section {
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.hero-content {
+  max-width: 820px;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-3);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--fg);
+  margin-bottom: var(--space-4);
+  letter-spacing: var(--tracking-display);
+}
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--accent);
+  margin-bottom: var(--space-4);
+  font-weight: 500;
+}
+
+.hero-desc {
+  font-size: var(--text-base);
+  color: var(--fg-2);
+  line-height: var(--leading-body);
+  margin-bottom: var(--space-6);
+}
+
+.contact-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--fg-2);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--motion-fast);
+}
+
+.contact-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 3%, transparent);
+}
+
+.contact-chip.interactive {
+  cursor: pointer;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* Technical Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.bento-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  transition: all var(--motion-base) var(--ease-standard);
+}
+
+.bento-card:hover {
+  border-color: var(--border-soft);
+  transform: translateY(-1px);
+}
+
+.bento-card-full {
+  grid-column: span 2;
+}
+
+.card-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  margin-bottom: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: var(--space-2);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  color: var(--fg);
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  background-color: #ffffff;
+  border: 1px solid var(--border);
+  color: var(--fg-2);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  transition: border-color var(--motion-fast);
+}
+
+.tech-tag:hover {
+  border-color: var(--accent);
+}
+
+/* Career Timeline - Git Log Style */
+.git-timeline {
+  position: relative;
+  margin-top: var(--space-8);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.git-commit {
+  display: flex;
+  gap: var(--space-4);
+  position: relative;
+  padding-bottom: var(--space-8);
+}
+
+.git-commit::before {
+  content: '';
+  position: absolute;
+  left: 140px;
+  top: 20px;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--border);
+  z-index: 1;
+}
+
+.git-commit:last-child::before {
+  display: none;
+}
+
+.git-meta {
+  width: 130px;
+  flex-shrink: 0;
+  text-align: right;
+  color: var(--muted);
+  font-size: var(--text-xs);
+  padding-top: var(--space-1);
+}
+
+.git-node {
+  position: relative;
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.git-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--border);
+  border: 2px solid var(--bg);
+  transition: all var(--motion-fast);
+}
+
+.git-commit:hover .git-dot {
+  background-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.git-body {
+  flex-grow: 1;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
+  transition: all var(--motion-fast);
+}
+
+.git-commit:hover .git-body {
+  border-color: var(--border-soft);
+}
+
+.commit-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--space-2);
+  gap: var(--space-2);
+}
+
+.commit-hash {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: var(--text-xs);
+  margin-right: var(--space-2);
+}
+
+.commit-tag {
+  font-size: 11px;
+  background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  color: color-mix(in srgb, var(--accent) 80%, black);
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+  font-weight: bold;
+}
+
+.commit-role {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--fg);
+  margin-top: var(--space-1);
+}
+
+.commit-org {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.commit-location {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.commit-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--fg-2);
+  margin-top: var(--space-3);
+  line-height: var(--leading-body);
+}
+
+.commit-bullets {
+  margin-top: var(--space-3);
+  padding-left: var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--fg-2);
+  list-style-type: square;
+}
+
+.commit-bullets li {
+  margin-bottom: 8px;
+  line-height: 1.55;
+}
+
+/* T-Shaped Paradigm & Education */
+.t-shape-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: stretch;
+  margin-top: var(--space-4);
+}
+
+.t-shape-col {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.t-shape-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: #ffffff;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-bottom: var(--space-4);
+}
+
+.t-shape-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: var(--space-3);
+}
+
+.t-shape-desc {
+  font-size: var(--text-sm);
+  color: var(--fg-2);
+  line-height: var(--leading-body);
+}
+
+.education-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.education-card-school {
+  font-size: var(--text-sm);
+  color: var(--accent);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Forms & Inputs */
+.form-group {
+  margin-bottom: var(--space-5);
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-input {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  padding: var(--space-3) var(--space-4);
+  transition: all var(--motion-fast);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--focus-ring);
+}
+
+textarea.form-input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Tooltip and copy feedback */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: 'Copied!';
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background-color: #111111;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 10px;
+  font-family: var(--font-mono);
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--motion-fast);
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.tooltip.show::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Footer Styling */
+footer {
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+  background-color: var(--bg);
+}
+
+.footer-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--fg-2);
+  text-decoration: none;
+  transition: color var(--motion-fast);
+}
+
+.footer-link:hover {
+  color: var(--accent);
+}
+
+/* Print styles */
+@media print {
+  body {
+    background-image: none !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt !important;
+    line-height: 1.5 !important;
+  }
+  header, .hero-actions, .nav-menu, .contact-chip svg, .print-exclude, #contact {
+    display: none !important;
+  }
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  .section-padding {
+    padding-top: var(--space-4) !important;
+    padding-bottom: var(--space-4) !important;
+    border-bottom: 1px solid #ccc !important;
+    page-break-inside: avoid;
+  }
+  .bento-grid {
+    display: block !important;
+  }
+  .bento-card {
+    margin-bottom: var(--space-4) !important;
+    page-break-inside: avoid;
+    background-color: transparent !important;
+    border: 1px solid #999999 !important;
+    padding: var(--space-4) !important;
+  }
+  .git-timeline::before {
+    display: none !important;
+  }
+  .git-commit {
+    display: block !important;
+    padding-bottom: var(--space-4) !important;
+    page-break-inside: avoid;
+  }
+  .git-meta {
+    text-align: left !important;
+    width: auto !important;
+    font-weight: bold !important;
+    margin-bottom: var(--space-1) !important;
+    color: #000000 !important;
+  }
+  .git-node {
+    display: none !important;
+  }
+  .git-body {
+    margin-left: 0 !important;
+    background-color: transparent !important;
+    border: 1px solid #999999 !important;
+    padding: var(--space-4) !important;
+  }
+  .t-shape-grid {
+    display: block !important;
+  }
+  .t-shape-col {
+    margin-bottom: var(--space-4) !important;
+    background-color: transparent !important;
+    border: 1px solid #999999 !important;
+    padding: var(--space-4) !important;
+    page-break-inside: avoid;
+  }
+  .contact-chips {
+    display: block !important;
+  }
+  .contact-chip {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin-right: var(--space-4) !important;
+    color: #000000 !important;
+  }
+  .commit-hash, .commit-tag {
+    display: none !important;
+  }
+  .section-title {
+    font-size: 16pt !important;
+    margin-bottom: var(--space-2) !important;
+  }
+  .section-subtitle {
+    font-size: 9pt !important;
+    margin-bottom: var(--space-4) !important;
+    color: #555555 !important;
+  }
+}
+
+/* Mobile Menu & Nav Responsiveness */
+#mobile-menu {
+  border-t: 1px solid var(--border);
+  background-color: var(--bg);
+}
+
+.mobile-menu-link {
+  display: block;
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--fg-2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: all var(--motion-fast);
+}
+
+.mobile-menu-link:hover {
+  background-color: var(--surface);
+  color: var(--accent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 920px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .bento-card-full {
+    grid-column: span 1;
+  }
+
+  .t-shape-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .git-commit {
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-bottom: var(--space-6);
+  }
+
+  .git-meta {
+    text-align: left;
+    width: 100%;
+    padding-left: 22px;
+  }
+
+  .git-commit::before {
+    left: 10px;
+    top: 36px;
+  }
+
+  .git-node {
+    position: absolute;
+    left: 0;
+    top: 20px;
+  }
+
+  .git-body {
+    margin-left: 22px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+}

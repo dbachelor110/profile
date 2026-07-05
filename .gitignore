@@ -141,3 +141,18 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Open Design
+.od-skills
+
+# Playwright
+playwright-report
+
+# Test Result
+test-results
+
+# Wrangler
+.wrangler
+
+# Astro
+.astro

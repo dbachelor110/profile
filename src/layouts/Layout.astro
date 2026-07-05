@@ -1,0 +1,180 @@
+---
+import { translations } from '../i18n/translations';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const currentLocale = Astro.currentLocale || 'zh';
+const t = translations[currentLocale as 'zh' | 'en'];
+
+const { title = t.meta.title, description = t.meta.description } = Astro.props;
+
+// Calculate current path and target path for language switcher
+const basePath = Astro.url.pathname.replace(/^\/en/, '') || '/';
+const isEnglish = currentLocale === 'en';
+const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : basePath}`;
+---
+
+<!doctype html>
+<html lang={currentLocale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <!-- Header Nav -->
+    <header data-od-id="nav-header">
+      <div class="nav-container">
+        <a href={isEnglish ? '/en' : '/'} class="brand-logo" data-od-id="nav-brand">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M4 4H8M4 4V20M4 20H8"
+              stroke="var(--accent)"
+              stroke-width="2"
+              stroke-linecap="round"></path>
+            <path
+              d="M9 16V8L12 12L15 8V16"
+              stroke="var(--fg)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M20 4H16M20 4V20M20 20H16"
+              stroke="var(--accent)"
+              stroke-width="2"
+              stroke-linecap="round"></path>
+          </svg>
+          <span>D. LIN</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden items-center gap-6 md:flex">
+          <a href="#about" class="nav-link">{t.nav.about}</a>
+          <a href="#skills" class="nav-link">{t.nav.skills}</a>
+          <a href="#experience" class="nav-link">{t.nav.experience}</a>
+          <a href="#contact" class="nav-link">{t.nav.contact}</a>
+
+          <!-- Lang switcher -->
+          <a
+            href={langSwitchUrl}
+            id="lang-switcher"
+            class="nav-link"
+            style="border: 1px solid var(--border); padding: 4px 10px; border-radius: var(--radius-sm);"
+          >
+            {isEnglish ? '繁體中文' : 'English'}
+          </a>
+        </nav>
+
+        <!-- Mobile Navigation Button & Language Switcher -->
+        <div class="flex items-center gap-4 md:hidden">
+          <a
+            href={langSwitchUrl}
+            id="lang-switcher-mobile"
+            class="nav-link"
+            style="border: 1px solid var(--border); padding: 4px 8px; border-radius: var(--radius-sm);"
+          >
+            {isEnglish ? '中' : 'EN'}
+          </a>
+
+          <button
+            type="button"
+            class="cursor-pointer text-[#111111] hover:text-[var(--accent)] focus:outline-none"
+            aria-label="Toggle menu"
+            id="menu-toggle"
+          >
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="hidden md:hidden" id="mobile-menu">
+        <div class="border-t border-[var(--border)] bg-white py-2">
+          <a href="#about" class="mobile-menu-link">{t.nav.about}</a>
+          <a href="#skills" class="mobile-menu-link">{t.nav.skills}</a>
+          <a href="#experience" class="mobile-menu-link">{t.nav.experience}</a>
+          <a href="#contact" class="mobile-menu-link">{t.nav.contact}</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer data-od-id="terminal-footer">
+      <div class="footer-container">
+        <div class="footer-meta">
+          &copy; {new Date().getFullYear()} DAVID LIN // BUILT WITH EXTREME RESTRAINT.
+        </div>
+        <div class="footer-links">
+          <a
+            href="https://github.com/dbachelor110"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-link"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/尚緯-林-7216b71b5"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-link"
+          >
+            LinkedIn
+          </a>
+          <a href="mailto:mmaoteacher@gmail.com" class="footer-link"> Email </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
