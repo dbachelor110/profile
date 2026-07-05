@@ -13,11 +13,9 @@ const t = translations[currentLocale as 'zh' | 'en'];
 const { title = t.meta.title, description = t.meta.description } = Astro.props;
 
 // Calculate current path and target path for language switcher
-const currentPath = Astro.url.pathname;
+const basePath = Astro.url.pathname.replace(/^\/en/, '') || '/';
 const isEnglish = currentLocale === 'en';
-const langSwitchUrl = isEnglish
-  ? currentPath.replace(/^\/en/, '') || '/'
-  : `/en${currentPath === '/' ? '' : currentPath}`;
+const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : basePath}`;
 ---
 
 <!doctype html>
