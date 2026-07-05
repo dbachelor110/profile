@@ -21,7 +21,10 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: process.env.WRANGLER === 'true' ? 'npm run preview' : 'npm run dev',
+    command:
+      process.env.WRANGLER === 'true'
+        ? 'npm run preview'
+        : 'npx astro build && npx -y http-server dist/client -p 4321',
     url: process.env.WRANGLER === 'true' ? 'http://localhost:8788' : 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
     stdout: 'pipe',

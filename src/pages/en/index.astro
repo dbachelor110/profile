@@ -6,112 +6,112 @@ const currentLocale = 'en';
 const t = translations[currentLocale];
 
 const mockLogs = [
-  'Initializing spider-man2 crawler engine...',
+  'Initializing WeaverCore crawler engine...',
   'Redis proxy pool status: [OK] - 256 nodes connected',
   'Target: National Legal Database',
   'Executing multi-threaded crawl...',
   'Crawl complete. Speed: 5,400 doc/sec',
-  'Running falcon2 verification pipeline...',
+  'Running Argus-v2 verification pipeline...',
   'Data integrity check: 100% verified (0 corruptions)',
   'Dynamically compiling TypeScript SDK...',
   'SDK generated and published via semantic-release',
   'Systems status: 99.9% stable. Extraction completed in 1.2 hrs (was 3 weeks).',
 ];
+
+const gitDetails = [
+  { hash: 'commit 8da76c2', branch: 'origin/lawsnote' },
+  { hash: 'commit e12b40d', branch: 'origin/asgard' },
+  { hash: 'commit a7641f9', branch: 'origin/mores' },
+];
 ---
 
 <Layout>
   <!-- Hero Section -->
-  <section
-    class="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-radial from-slate-900 via-slate-950 to-slate-950 px-4 py-20 sm:px-6 lg:px-8"
-  >
-    <!-- Glowing background accents -->
-    <div
-      class="pointer-events-none absolute top-1/4 left-1/4 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-3xl"
-    >
-    </div>
-    <div
-      class="pointer-events-none absolute right-1/4 bottom-1/4 h-[400px] w-[400px] translate-x-1/2 translate-y-1/2 rounded-full bg-cyan-500/10 blur-3xl"
-    >
-    </div>
-
-    <div
-      class="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12"
-    >
+  <section class="hero-section" id="about">
+    <div class="container grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
       <!-- Intro Text -->
-      <div class="flex flex-col space-y-6 text-center lg:col-span-7 lg:text-left">
-        <div
-          class="inline-flex items-center space-x-2 self-center rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold tracking-wide text-emerald-400 lg:self-start"
-        >
-          <span>🎯 {t.hero.greeting}</span>
+      <div class="flex flex-col lg:col-span-7">
+        <div class="hero-eyebrow">
+          SYSTEM STATUS: OPTIMAL // INDIVIDUAL CONTRIBUTOR
         </div>
 
-        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-          <span
-            class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent"
-            >{t.hero.title}</span
-          >
+        <h1 class="hero-title">
+          {t.hero.title}
         </h1>
 
-        <h2 class="text-xl font-semibold text-slate-300 sm:text-2xl">
+        <h2 class="hero-subtitle">
           {t.hero.subtitle}
         </h2>
 
-        <p class="mx-auto max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg lg:mx-0">
+        <p class="hero-desc">
           {t.hero.summary}
         </p>
 
-        <div
-          class="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row lg:justify-start"
-        >
-          <a
-            href="#contact"
-            class="w-full rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 py-3 text-center font-medium text-slate-950 shadow-lg shadow-emerald-500/20 transition-all duration-300 hover:from-emerald-600 hover:to-cyan-600 hover:shadow-emerald-500/35 sm:w-auto"
-          >
-            {t.hero.contactButton}
+        <!-- Relocation/Goal Notice -->
+        <p style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--muted); margin-bottom: var(--space-5); line-height: 1.5; border-left: 2px solid var(--accent); padding-left: var(--space-3);" class="print-exclude">
+          {t.about.goalText}
+        </p>
+
+        <!-- Contact Chips -->
+        <div class="contact-chips">
+          <span class="contact-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            Taipei, Taiwan (Open to Relocation / Remote)
+          </span>
+          <span class="contact-chip tooltip interactive" id="copy-email-btn" data-email="mmaoteacher@gmail.com">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            mmaoteacher@gmail.com
+          </span>
+          <a href="tel:+886985798182" class="contact-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            +886 985-798-182
           </a>
-          <a
-            href="https://drive.google.com/open?id=13ChytCTjI30ra4P645zif6URb3ppwDorGC3JiVVhY-A"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full rounded-lg border border-slate-700 px-8 py-3 text-center text-slate-300 transition-all duration-200 hover:border-emerald-500 hover:text-emerald-400 sm:w-auto"
-          >
-            {t.hero.cvButton}
+          <a href="https://www.linkedin.com/in/尚緯-林-7216b71b5" target="_blank" rel="noopener noreferrer" class="contact-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            LinkedIn
           </a>
+          <a href="https://github.com/dbachelor110" target="_blank" rel="noopener noreferrer" class="contact-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            dbachelor110
+          </a>
+        </div>
+
+        <div class="hero-actions print-exclude">
+          <a href="#experience" class="btn btn-primary">{t.hero.contactButton}</a>
+          <button id="print-resume-btn" class="btn btn-secondary">
+            <span style="font-family: var(--font-mono); margin-right: 4px;">[PDF]</span> {t.hero.cvButton}
+          </button>
         </div>
       </div>
 
-      <!-- Cyber Terminal/Console Mockup -->
-      <div class="w-full lg:col-span-5">
-        <div class="glass overflow-hidden rounded-xl border border-slate-800 shadow-2xl">
+      <!-- Cyber Terminal/Console Mockup styled for Paper design -->
+      <div class="w-full lg:col-span-5 print-exclude">
+        <div style="background-color: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden;">
           <!-- Terminal Title bar -->
-          <div
-            class="flex items-center justify-between border-b border-slate-800/80 bg-slate-900/90 px-4 py-3"
-          >
-            <div class="flex items-center space-x-2">
-              <div class="h-3 w-3 rounded-full bg-rose-500/80"></div>
-              <div class="h-3 w-3 rounded-full bg-amber-500/80"></div>
-              <div class="h-3 w-3 rounded-full bg-emerald-500/80"></div>
+          <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background-color: var(--surface-warm); padding: 8px 16px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <div style="height: 10px; width: 10px; border-radius: 50%; background-color: #ef4444; opacity: 0.8;"></div>
+              <div style="height: 10px; width: 10px; border-radius: 50%; background-color: #f59e0b; opacity: 0.8;"></div>
+              <div style="height: 10px; width: 10px; border-radius: 50%; background-color: #10b981; opacity: 0.8;"></div>
             </div>
-            <span class="font-mono text-xs text-slate-500">spider-man2.sh</span>
-            <div class="w-4"></div>
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--muted);">weaver-core.sh</span>
+            <div style="width: 30px;"></div>
           </div>
           <!-- Terminal Logs -->
-          <div
-            class="min-h-[280px] space-y-2.5 bg-slate-950/80 p-5 font-mono text-xs text-slate-300 sm:text-sm"
-          >
+          <div style="min-height: 250px; background-color: #ffffff; padding: var(--space-4); font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); line-height: 1.5; display: flex; flex-col; gap: 8px; flex-direction: column;">
             {
               mockLogs.map((log, index) => (
-                <div class="flex items-start space-x-2">
-                  <span class="text-emerald-500 select-none">&gt;</span>
-                  <span class={index === mockLogs.length - 1 ? 'font-semibold text-cyan-400' : ''}>
+                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                  <span style="color: var(--accent); user-select: none;">&gt;</span>
+                  <span style={index === mockLogs.length - 1 ? 'font-weight: 700; color: var(--accent);' : ''}>
                     {log}
                   </span>
                 </div>
               ))
             }
-            <div class="flex animate-pulse items-center space-x-1.5">
-              <span class="text-emerald-500">&gt;</span>
-              <span class="h-4 w-2 bg-emerald-400"></span>
+            <div style="display: flex; align-items: center; gap: 6px;" class="animate-pulse">
+              <span style="color: var(--accent);">&gt;</span>
+              <span style="height: 12px; width: 6px; background-color: var(--accent); display: inline-block;"></span>
             </div>
           </div>
         </div>
@@ -119,173 +119,44 @@ const mockLogs = [
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="border-y border-slate-900 bg-slate-950 px-4 py-24 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-4xl">
-      <h2
-        class="mb-12 flex items-center justify-center space-x-3 text-center text-3xl font-bold tracking-tight"
-      >
-        <span class="h-px w-8 bg-emerald-500/50"></span>
-        <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
-          >{t.about.title}</span
-        >
-        <span class="h-px w-8 bg-emerald-500/50"></span>
-      </h2>
+  <!-- Technical Skills Section -->
+  <section id="skills" class="section-padding">
+    <div class="container">
+      <h3 class="section-title">{t.skills.title}</h3>
+      <div class="section-subtitle">Core capabilities & operational tech stack</div>
 
-      <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-3">
-        <div class="space-y-6 leading-relaxed text-slate-300 md:col-span-2">
-          <p>{t.about.paragraph1}</p>
-          <p>{t.about.paragraph2}</p>
-        </div>
-
-        <!-- Relocation/Goal Card -->
-        <div class="glass-glow rounded-xl border border-emerald-500/10 p-6">
-          <h3 class="mb-3 flex items-center text-lg font-semibold text-emerald-400">
-            <svg class="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 20l-5.447-2.724A2 2 0 013 15.382V6.618a2 2 0 011.18 1.894L9 11l5.447-2.724A2 2 0 0116 10.18v8.764a2 2 0 01-1.18 1.894L9 20z"
-              ></path>
-            </svg>
-            {t.about.goalTitle}
-          </h3>
-          <p class="text-sm leading-relaxed text-slate-400">
-            {t.about.goalText}
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" class="bg-slate-950/40 px-4 py-24 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-4xl">
-      <h2
-        class="mb-16 flex items-center justify-center space-x-3 text-center text-3xl font-bold tracking-tight"
-      >
-        <span class="h-px w-8 bg-cyan-500/50"></span>
-        <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
-          >{t.experience.title}</span
-        >
-        <span class="h-px w-8 bg-cyan-500/50"></span>
-      </h2>
-
-      <!-- Timeline -->
-      <div class="relative ml-4 space-y-12 border-l border-slate-800 md:ml-6">
-        {
-          t.resume.jobs.map((job) => (
-            <div class="group relative pl-8 md:pl-10">
-              {/* Timeline dot */}
-              <div class="absolute top-1.5 -left-1.5 h-3.5 w-3.5 rounded-full border-2 border-emerald-500 bg-slate-950 transition-all duration-300 group-hover:border-cyan-400 group-hover:bg-cyan-500/20" />
-
-              <div class="glass rounded-xl border border-slate-800 p-6 transition-all duration-200 hover:border-slate-700">
-                <div class="mb-4 flex flex-col justify-between gap-2 md:flex-row md:items-center">
-                  <div>
-                    <h3 class="text-xl font-bold text-slate-100 transition-colors group-hover:text-emerald-400">
-                      {job.company}
-                    </h3>
-                    <p class="mt-0.5 text-sm text-slate-400">
-                      {job.title} &middot; <span class="text-slate-500">{job.location}</span>
-                    </p>
-                  </div>
-                  <span class="inline-block self-start rounded-full border border-slate-800 bg-slate-900 px-3 py-1 text-xs whitespace-nowrap text-slate-400 md:self-center">
-                    {job.period}
-                  </span>
-                </div>
-
-                <ul class="text-slate-350 list-disc space-y-2.5 pl-4 text-sm leading-relaxed">
-                  {job.achievements.map((achievement) => (
-                    <li>{achievement}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-
-      <!-- Education Card -->
-      <div
-        class="mt-16 ml-4 flex items-start space-x-4 rounded-xl border border-slate-800/80 bg-slate-900/40 p-6 md:ml-6"
-      >
-        <div class="rounded-lg bg-emerald-500/10 p-3 text-emerald-400">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222 4 2.222V20"
-            ></path>
-          </svg>
-        </div>
-        <div>
-          <h3 class="font-bold text-slate-200">{t.resume.education.title}</h3>
-          <p class="mt-1 text-sm text-slate-300">{t.resume.education.school}</p>
-          <p class="mt-0.5 text-xs text-slate-500">
-            {t.resume.education.degree} &middot; {t.resume.education.period}
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="border-y border-slate-900 bg-slate-950 px-4 py-24 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-4xl">
-      <h2
-        class="mb-16 flex items-center justify-center space-x-3 text-center text-3xl font-bold tracking-tight"
-      >
-        <span class="h-px w-8 bg-emerald-500/50"></span>
-        <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
-          >{t.skills.title}</span
-        >
-        <span class="h-px w-8 bg-emerald-500/50"></span>
-      </h2>
-
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      <div class="bento-grid">
         <!-- Languages -->
-        <div class="glass rounded-xl border border-slate-800 p-6">
-          <h3 class="mb-4 flex items-center text-lg font-bold text-slate-200">
-            <span class="mr-2.5 h-2 w-2 rounded-full bg-emerald-500"></span>
-            {t.skills.categories.languages}
-          </h3>
-          <div class="flex flex-wrap gap-2.5">
+        <div class="bento-card">
+          <div class="card-label">LANGUAGES & ENVIRONMENT</div>
+          <h3 class="card-title">{t.skills.categories.languages}</h3>
+          <div class="tech-list">
             {
               ['Node.js', 'TypeScript', 'JavaScript', 'SQL', 'GoLang (Familiar)'].map((skill) => (
-                <span class="rounded-lg border border-slate-800/80 bg-slate-900 px-3.5 py-1.5 text-sm text-slate-300 transition-all hover:border-emerald-500/50">
-                  {skill}
-                </span>
+                <span class="tech-tag">{skill}</span>
               ))
             }
           </div>
         </div>
 
         <!-- Frameworks -->
-        <div class="glass rounded-xl border border-slate-800 p-6">
-          <h3 class="mb-4 flex items-center text-lg font-bold text-slate-200">
-            <span class="mr-2.5 h-2 w-2 rounded-full bg-cyan-500"></span>
-            {t.skills.categories.frameworks}
-          </h3>
-          <div class="flex flex-wrap gap-2.5">
+        <div class="bento-card">
+          <div class="card-label">FRAMEWORKS & LIBRARIES</div>
+          <h3 class="card-title">{t.skills.categories.frameworks}</h3>
+          <div class="tech-list">
             {
               ['Express.js', 'React', 'Next.js', 'Astro', 'SolidJS'].map((skill) => (
-                <span class="rounded-lg border border-slate-800/80 bg-slate-900 px-3.5 py-1.5 text-sm text-slate-300 transition-all hover:border-cyan-500/50">
-                  {skill}
-                </span>
+                <span class="tech-tag">{skill}</span>
               ))
             }
           </div>
         </div>
 
         <!-- Databases & Infra -->
-        <div class="glass rounded-xl border border-slate-800 p-6">
-          <h3 class="mb-4 flex items-center text-lg font-bold text-slate-200">
-            <span class="mr-2.5 h-2 w-2 rounded-full bg-emerald-500"></span>
-            {t.skills.categories.databases}
-          </h3>
-          <div class="flex flex-wrap gap-2.5">
+        <div class="bento-card">
+          <div class="card-label">DATABASES & INFRASTRUCTURE</div>
+          <h3 class="card-title">{t.skills.categories.databases}</h3>
+          <div class="tech-list">
             {
               [
                 'PostgreSQL',
@@ -295,28 +166,22 @@ const mockLogs = [
                 'Docker',
                 'Cloudflare (Workers, D1)',
               ].map((skill) => (
-                <span class="rounded-lg border border-slate-800/80 bg-slate-900 px-3.5 py-1.5 text-sm text-slate-300 transition-all hover:border-emerald-500/50">
-                  {skill}
-                </span>
+                <span class="tech-tag">{skill}</span>
               ))
             }
           </div>
         </div>
 
         <!-- Tools & Automation -->
-        <div class="glass rounded-xl border border-slate-800 p-6">
-          <h3 class="mb-4 flex items-center text-lg font-bold text-slate-200">
-            <span class="mr-2.5 h-2 w-2 rounded-full bg-cyan-500"></span>
-            {t.skills.categories.tools}
-          </h3>
-          <div class="flex flex-wrap gap-2.5">
+        <div class="bento-card">
+          <div class="card-label">TOOLS & AUTOMATION</div>
+          <h3 class="card-title">{t.skills.categories.tools}</h3>
+          <div class="tech-list">
             {
               ['Git', 'CI/CD Pipelines', 'semantic-release', 'openapi-ts', 'Swagger/OpenAPI'].map(
                 (skill) => (
-                  <span class="rounded-lg border border-slate-800/80 bg-slate-900 px-3.5 py-1.5 text-sm text-slate-300 transition-all hover:border-cyan-500/50">
-                    {skill}
-                  </span>
-                ),
+                  <span class="tech-tag">{skill}</span>
+                )
               )
             }
           </div>
@@ -325,80 +190,141 @@ const mockLogs = [
     </div>
   </section>
 
+  <!-- Career Experience Section -->
+  <section id="experience" class="section-padding">
+    <div class="container">
+      <h3 class="section-title">{t.experience.title}</h3>
+      <div class="section-subtitle">Chronological record of production impact</div>
+
+      <div class="git-timeline">
+        {
+          t.resume.jobs.map((job, index) => (
+            <div class="git-commit">
+              <div class="git-meta">{job.period}</div>
+              <div class="git-node"><span class="git-dot"></span></div>
+              <div class="git-body">
+                <div class="commit-header">
+                  <div>
+                    <span class="commit-hash">{gitDetails[index]?.hash || 'commit def1234'}</span>
+                    <span class="commit-tag">{gitDetails[index]?.branch || 'origin/main'}</span>
+                  </div>
+                  <span class="commit-location">{job.location}</span>
+                </div>
+                <div class="commit-role">
+                  {job.title} <span class="commit-org">@ {job.company}</span>
+                </div>
+                <ul class="commit-bullets">
+                  {job.achievements.map((achievement) => (
+                    <li>{achievement}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- T-Shaped Paradigm & Education Section -->
+  <section id="paradigm" class="section-padding">
+    <div class="container">
+      <h3 class="section-title">{t.paradigm.title}</h3>
+      <div class="section-subtitle">{t.paradigm.subtitle}</div>
+
+      <div class="t-shape-grid">
+        <!-- Leadership -->
+        <div class="t-shape-col">
+          <div>
+            <div class="t-shape-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <h3 class="t-shape-title">{t.paradigm.leadershipTitle}</h3>
+            <p class="t-shape-desc">{t.paradigm.leadershipDesc}</p>
+          </div>
+        </div>
+
+        <!-- Analytical Rigor -->
+        <div class="t-shape-col">
+          <div>
+            <div class="t-shape-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 6v6l4 2"/>
+              </svg>
+            </div>
+            <h3 class="t-shape-title">{t.paradigm.rigorTitle}</h3>
+            <p class="t-shape-desc">{t.paradigm.rigorDesc}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education Card -->
+      <div class="bento-card" style="margin-top: var(--space-4);">
+        <div class="card-label">ACADEMIC FOUNDATION</div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: var(--space-2);">
+          <div>
+            <h3 class="education-card-title">{t.resume.education.degree}</h3>
+            <p class="education-card-school">{t.resume.education.school}</p>
+          </div>
+          <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--muted);">{t.resume.education.period}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
-  <section id="contact" class="px-4 py-24 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-xl">
-      <h2
-        class="mb-6 flex items-center justify-center space-x-3 text-center text-3xl font-bold tracking-tight"
-      >
-        <span class="h-px w-8 bg-cyan-500/50"></span>
-        <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
-          >{t.contact.title}</span
-        >
-        <span class="h-px w-8 bg-cyan-500/50"></span>
-      </h2>
+  <section id="contact" class="section-padding" style="border-bottom: none;">
+    <div class="container" style="max-width: 600px;">
+      <h3 class="section-title" style="text-align: center;">{t.contact.title}</h3>
+      <p class="section-subtitle" style="text-align: center; margin-bottom: var(--space-8);">{t.contact.subtitle}</p>
 
-      <p class="mb-12 text-center text-sm leading-relaxed text-slate-400 sm:text-base">
-        {t.contact.subtitle}
-      </p>
-
-      <form id="contact-form" class="glass space-y-6 rounded-xl border border-slate-800 p-8">
-        <div>
-          <label
-            for="name"
-            class="mb-2 block text-xs font-semibold tracking-wider text-slate-400 uppercase"
-            >{t.contact.name}</label
-          >
+      <form id="contact-form" style="background-color: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6) var(--space-8);">
+        <div class="form-group">
+          <label for="name" class="form-label">{t.contact.name}</label>
           <input
             type="text"
             id="name"
             name="name"
             required
-            class="w-full rounded-lg border border-slate-800 bg-slate-950 px-4 py-3 text-slate-200 placeholder-slate-600 transition-colors focus:border-emerald-500 focus:outline-none"
+            class="form-input"
           />
         </div>
 
-        <div>
-          <label
-            for="email"
-            class="mb-2 block text-xs font-semibold tracking-wider text-slate-400 uppercase"
-            >{t.contact.email}</label
-          >
+        <div class="form-group">
+          <label for="email" class="form-label">{t.contact.email}</label>
           <input
             type="email"
             id="email"
             name="email"
             required
-            class="w-full rounded-lg border border-slate-800 bg-slate-950 px-4 py-3 text-slate-200 placeholder-slate-600 transition-colors focus:border-emerald-500 focus:outline-none"
+            class="form-input"
           />
         </div>
 
-        <div>
-          <label
-            for="message"
-            class="mb-2 block text-xs font-semibold tracking-wider text-slate-400 uppercase"
-            >{t.contact.message}</label
-          >
+        <div class="form-group">
+          <label for="message" class="form-label">{t.contact.message}</label>
           <textarea
             id="message"
             name="message"
-            rows="5"
             required
-            class="w-full resize-none rounded-lg border border-slate-800 bg-slate-950 px-4 py-3 text-slate-200 placeholder-slate-600 transition-colors focus:border-emerald-500 focus:outline-none"
+            class="form-input"
           ></textarea>
         </div>
 
         <button
           type="submit"
           id="submit-btn"
-          class="w-full rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 py-3.5 font-semibold text-slate-950 shadow-md shadow-emerald-500/10 transition-all duration-300 hover:from-emerald-600 hover:to-cyan-600 hover:shadow-lg hover:shadow-emerald-500/20"
+          class="btn btn-primary"
+          style="width: 100%; display: flex; justify-content: center;"
         >
           {t.contact.send}
         </button>
 
         <div
           id="form-success"
-          class="hidden rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-4 text-center text-sm text-emerald-400"
+          style="display: none; margin-top: var(--space-4); border: 1px solid rgba(22, 163, 74, 0.2); background-color: rgba(22, 163, 74, 0.05); color: var(--success); padding: var(--space-3) var(--space-4); text-align: center; border-radius: var(--radius-sm); font-size: var(--text-sm);"
         >
           {t.contact.success}
         </div>
@@ -408,6 +334,31 @@ const mockLogs = [
 </Layout>
 
 <script>
+  // Copy to clipboard helper
+  const copyBtn = document.getElementById('copy-email-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const email = copyBtn.getAttribute('data-email') || '';
+      navigator.clipboard.writeText(email).then(() => {
+        copyBtn.classList.add('show');
+        setTimeout(() => {
+          copyBtn.classList.remove('show');
+        }, 1500);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    });
+  }
+
+  // Print resume handler
+  const printBtn = document.getElementById('print-resume-btn');
+  if (printBtn) {
+    printBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  // Contact Form Submission Handling
   const contactForm = document.getElementById('contact-form') as HTMLFormElement;
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
   const formSuccess = document.getElementById('form-success') as HTMLDivElement;
@@ -424,6 +375,7 @@ const mockLogs = [
       };
 
       submitBtn.disabled = true;
+      const originalText = submitBtn.innerText;
       submitBtn.innerText = 'Sending...';
 
       try {
@@ -436,7 +388,7 @@ const mockLogs = [
         });
 
         if (response.ok) {
-          formSuccess.classList.remove('hidden');
+          formSuccess.style.display = 'block';
           contactForm.reset();
         } else {
           alert('Failed to send message. Please try again.');
@@ -446,7 +398,7 @@ const mockLogs = [
         alert('An error occurred. Please try again later.');
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerText = 'Send Message';
+        submitBtn.innerText = originalText;
       }
     });
   }

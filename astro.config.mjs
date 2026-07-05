@@ -9,5 +9,11 @@ export default defineConfig({
   adapter: cloudflare(),
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      watch: {
+        usePolling: true,
+        ignored: ['**/node_modules/**', '**/.git/**', '**/.astro/**', '**/.wrangler/**'],
+      },
+    },
   },
 });
