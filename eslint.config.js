@@ -46,6 +46,7 @@ export default [
       'node_modules/',
       '.astro/',
       '.wrangler/',
+      '.od-skills/',
       'playwright-report/',
       'test-results/',
       'coverage/',

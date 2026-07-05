@@ -1,5 +1,7 @@
-export function parse(str: string, options?: any) {
-  const obj: any = {};
+import type { ParseOptions, SerializeOptions } from 'cookie';
+
+export function parse(str: string, options?: ParseOptions) {
+  const obj: Partial<Record<string, string | undefined>> = {};
   if (!str) return obj;
   const pairs = str.split(';');
   for (const pair of pairs) {
@@ -23,7 +25,7 @@ export function parse(str: string, options?: any) {
 
 export const parseCookie = parse;
 
-export function serialize(name: string, val: string, options?: any) {
+export function serialize(name: string, val: string, options?: SerializeOptions) {
   let str = name + '=' + (options?.encode ? options.encode(val) : encodeURIComponent(val));
   if (options) {
     if (options.maxAge !== undefined) {
@@ -45,9 +47,8 @@ export function serialize(name: string, val: string, options?: any) {
       str += '; Secure';
     }
     if (options.sameSite) {
-      const sameSite = typeof options.sameSite === 'string' 
-        ? options.sameSite.toLowerCase() 
-        : options.sameSite;
+      const sameSite =
+        typeof options.sameSite === 'string' ? options.sameSite.toLowerCase() : options.sameSite;
       switch (sameSite) {
         case true:
           str += '; SameSite=Strict';
@@ -70,6 +71,6 @@ export function serialize(name: string, val: string, options?: any) {
 export const stringifyCookie = serialize;
 export const stringifySetCookie = serialize;
 
-export function parseSetCookie(str: string, options?: any) {
+export function parseSetCookie(str: string, options?: ParseOptions) {
   return [];
 }
