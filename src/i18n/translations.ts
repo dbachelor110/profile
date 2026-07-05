@@ -61,6 +61,10 @@ export interface TranslationSchema {
     send: string;
     success: string;
   };
+  langSwitch: {
+    desktop: string;
+    mobile: string;
+  };
   resume: {
     education: {
       title: string;
@@ -141,6 +145,10 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
       message: '留言內容',
       send: '送出訊息',
       success: '感謝您的留言！我會盡快回覆您。',
+    },
+    langSwitch: {
+      desktop: 'English',
+      mobile: 'EN',
     },
     resume: {
       education: {
@@ -252,6 +260,10 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
       message: 'Your Message',
       send: 'Send Message',
       success: 'Thank you for your message! I will get back to you as soon as possible.',
+    },
+    langSwitch: {
+      desktop: 'English',
+      mobile: 'EN',
     },
     resume: {
       education: {
