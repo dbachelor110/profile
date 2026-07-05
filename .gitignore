@@ -141,3 +141,12 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Test Result
+test-results
+
+# Wrangler
+.wrangler
+
+# Astro
+.astro
