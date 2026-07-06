@@ -1,4 +1,9 @@
 import type { APIRoute } from 'astro';
+import { sendEmail } from '@/utils/sendEmail';
+import { getSecret } from 'astro:env/server';
+import { EMAIL } from '@/constants';
+
+export const prerender = false;
 
 type ContactRequestBody = {
   name: string;
@@ -8,6 +13,14 @@ type ContactRequestBody = {
 
 export const POST: APIRoute = async ({ request }) => {
   try {
+    const RESEND_API_KEY = getSecret('RESEND_API_KEY');
+    if (!RESEND_API_KEY) {
+      return new Response(JSON.stringify({ error: 'RESEND_API_KEY Not Setted' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
     const body: ContactRequestBody = await request.json();
     const { name, email, message } = body;
 
@@ -29,6 +42,8 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Logging the submission on the worker node
     console.log('Contact form submission received:', { name, email, message });
+
+    await sendEmail(EMAIL, `Contact from ${name}`, `from: ${email}<br>${message}`, RESEND_API_KEY);
 
     return new Response(
       JSON.stringify({ success: true, message: 'Message received successfully!' }),
