@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro build && wrangler pages dev --persist-to .wrangler/state",
+    "preview": "astro build && wrangler dev --config dist/server/wrangler.json --persist-to .wrangler/state",
     "astro": "astro",
-    "deploy": "astro build && wrangler pages deploy",
+    "deploy": "astro build && wrangler deploy --config dist/server/wrangler.json",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "type-check": "astro check && tsc --noEmit",
