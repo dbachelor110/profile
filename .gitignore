@@ -156,3 +156,4 @@ test-results
 
 # Astro
 .astro
+.dev.var
