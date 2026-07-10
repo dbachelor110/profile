@@ -66,7 +66,7 @@ const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : baseP
             class="nav-link"
             style="border: 1px solid var(--border); padding: 4px 10px; border-radius: var(--radius-sm);"
           >
-            {isEnglish ? '繁體中文' : 'English'}
+            {t.langSwitch.desktop}
           </a>
         </nav>
 
@@ -78,7 +78,7 @@ const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : baseP
             class="nav-link"
             style="border: 1px solid var(--border); padding: 4px 8px; border-radius: var(--radius-sm);"
           >
-            {isEnglish ? '中' : 'EN'}
+            {t.langSwitch.mobile}
           </a>
 
           <button
@@ -144,8 +144,8 @@ const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : baseP
     <!-- Print-only resume document -->
     <div class="print-only-resume">
       <div class="print-header">
-        <div class="print-name">{isEnglish ? "SHANG-WEI (DAVID) LIN" : "林尚緯 (Shang-Wei Lin)"}</div>
-        <p class="print-subtitle">{isEnglish ? "Taipei, Taiwan (Open to Relocation / Remote)" : "台灣台北 (接受遠端/移居)"}</p>
+        <div class="print-name">{t.resume.name}</div>
+        <p class="print-subtitle">{t.resume.location}</p>
         <p class="print-contact">
           mmaoteacher@gmail.com | +886 985-798-182 | 
           <a href="https://www.linkedin.com/in/尚緯-林-7216b71b5" target="_blank">linkedin.com/in/David-Lin</a> | 
@@ -154,9 +154,9 @@ const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : baseP
       </div>
 
       <div class="print-section">
-        <div class="print-section-title">{isEnglish ? "PROFESSIONAL SUMMARY" : "專業總覽"}</div>
+        <div class="print-section-title">{t.resume.sections.summary}</div>
         <div class="print-section-line"></div>
-        <p>{isEnglish ? "Senior Backend Engineer specializing in data reliability, scalable pipelines, and engineering efficiency. Passionate about tackling complex architecture bottlenecks in high-caliber teams." : "專精於數據可靠性、高併發管道與工程效率的資深後端工程師。在解決複雜的架構瓶頸與建構健壯的自動化解決方案（從多執行緒爬蟲系統到 CI/CD SDK 自動生成）方面有深厚經驗。熱衷於作為個人貢獻者 (IC) 在高效團隊中解決具挑戰性的數據基礎設施瓶頸。"}</p>
+        <p>{t.resume.summary}</p>
       </div>
 
       <div class="print-section">
@@ -172,7 +172,7 @@ const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : baseP
       </div>
 
       <div class="print-section">
-        <div class="print-section-title">{isEnglish ? "WORK EXPERIENCE" : "工作經歷"}</div>
+        <div class="print-section-title">{t.resume.sections.experience}</div>
         <div class="print-section-line"></div>
         
         {t.resume.jobs.map(job => (
@@ -204,7 +204,7 @@ const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : baseP
       </div>
 
       <div class="print-section" style="page-break-inside: avoid;">
-        <div class="print-section-title">{isEnglish ? "EDUCATION" : "學歷"}</div>
+        <div class="print-section-title">{t.resume.sections.education}</div>
         <div class="print-section-line"></div>
         <div class="print-job">
           <div class="print-job-header">

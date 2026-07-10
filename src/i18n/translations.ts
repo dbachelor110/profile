@@ -57,6 +57,15 @@ export interface TranslationSchema {
     mobile: string;
   };
   resume: {
+    name: string;
+    location: string;
+    summary: string;
+    sections: {
+      summary: string;
+      skills: string;
+      experience: string;
+      education: string;
+    };
     education: {
       title: string;
       school: string;
@@ -150,6 +159,15 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
       mobile: 'EN',
     },
     resume: {
+      name: '林尚緯 (Shang-Wei Lin)',
+      location: '台灣台北 (接受遠端/移居)',
+      summary: '專精於數據可靠性、高併發管道與工程效率的資深後端工程師。在解決複雜的架構瓶頸與建構健壯的自動化解決方案（從多執行緒爬蟲系統到 CI/CD SDK 自動生成）方面有深厚經驗。熱衷於作為個人貢獻者 (IC) 在高效團隊中解決具挑戰性的數據基礎設施瓶頸。',
+      sections: {
+        summary: '專業總覽',
+        skills: '專業技能',
+        experience: '工作經歷',
+        education: '學歷',
+      },
       education: {
         title: '學歷',
         school: '國立成功大學 (National Cheng Kung University)',
@@ -268,10 +286,19 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
       success: 'Thank you for your message! I will get back to you as soon as possible.',
     },
     langSwitch: {
-      desktop: 'English',
-      mobile: 'EN',
+      desktop: '繁體中文',
+      mobile: '中',
     },
     resume: {
+      name: 'SHANG-WEI (DAVID) LIN',
+      location: 'Taipei, Taiwan (Open to Relocation / Remote)',
+      summary: 'Senior Backend Engineer specializing in data reliability, scalable pipelines, and engineering efficiency. Passionate about tackling complex architecture bottlenecks in high-caliber teams.',
+      sections: {
+        summary: 'PROFESSIONAL SUMMARY',
+        skills: 'TECHNICAL SKILLS',
+        experience: 'WORK EXPERIENCE',
+        education: 'EDUCATION',
+      },
       education: {
         title: 'Education',
         school: 'National Cheng Kung University | Tainan, Taiwan',
