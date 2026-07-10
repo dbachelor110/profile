@@ -36,10 +36,11 @@ export interface TranslationSchema {
   skills: {
     title: string;
     categories: {
-      languages: string;
-      frameworks: string;
-      databases: string;
-      tools: string;
+      languages: { label: string; keyLabel: string; items: string[] };
+      frameworks: { label: string; keyLabel: string; items: string[] };
+      databases: { label: string; keyLabel: string; items: string[] };
+      tools: { label: string; keyLabel: string; items: string[] };
+      aiNative: { label: string; keyLabel: string; items: string[] };
     };
   };
   contact: {
@@ -108,10 +109,31 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
     skills: {
       title: '專業技能',
       categories: {
-        languages: '程式語言與環境',
-        frameworks: '開發框架與套件',
-        databases: '資料庫與基礎設施',
-        tools: '開發工具與自動化',
+        languages: {
+          label: '程式語言與環境',
+          keyLabel: 'LANGUAGES & ENVIRONMENT',
+          items: ['Node.js', 'TypeScript', 'JavaScript', 'SQL', 'GoLang (Familiar)'],
+        },
+        frameworks: {
+          label: '開發框架與套件',
+          keyLabel: 'FRAMEWORKS & LIBRARIES',
+          items: ['Koa.js', 'Express.js', 'React', 'Next.js', 'Astro', 'SolidJS'],
+        },
+        databases: {
+          label: '資料庫與基礎設施',
+          keyLabel: 'DATABASES & INFRASTRUCTURE',
+          items: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'Docker', 'Cloudflare (Workers, D1)'],
+        },
+        tools: {
+          label: '開發工具與自動化',
+          keyLabel: 'TOOLS & AUTOMATION',
+          items: ['Git', 'CI/CD Pipelines', 'semantic-release', 'openapi-ts', 'Swagger/OpenAPI'],
+        },
+        aiNative: {
+          label: 'AI 原生與代理工作流',
+          keyLabel: 'AI-NATIVE & AGENTIC WORKFLOWS',
+          items: ['Claude Code', 'GitHub Copilot', 'Cursor', 'Context Engineering', 'Model Context Protocol (MCP) 客製伺服器整合'],
+        },
       },
     },
     contact: {
@@ -208,10 +230,31 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
     skills: {
       title: 'Skills',
       categories: {
-        languages: 'Languages & Environment',
-        frameworks: 'Frameworks & Libs',
-        databases: 'Databases & Infra',
-        tools: 'Tools & Automation',
+        languages: {
+          label: 'Languages & Environment',
+          keyLabel: 'LANGUAGES & ENVIRONMENT',
+          items: ['Node.js', 'TypeScript', 'JavaScript', 'SQL', 'GoLang (Familiar)'],
+        },
+        frameworks: {
+          label: 'Frameworks & Libs',
+          keyLabel: 'FRAMEWORKS & LIBRARIES',
+          items: ['Koa.js', 'Express.js', 'React', 'Next.js', 'Astro', 'SolidJS'],
+        },
+        databases: {
+          label: 'Databases & Infra',
+          keyLabel: 'DATABASES & INFRASTRUCTURE',
+          items: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'Docker', 'Cloudflare (Workers, D1)'],
+        },
+        tools: {
+          label: 'Tools & Automation',
+          keyLabel: 'TOOLS & AUTOMATION',
+          items: ['Git', 'CI/CD Pipelines', 'semantic-release', 'openapi-ts', 'Swagger/OpenAPI'],
+        },
+        aiNative: {
+          label: 'AI-Native & Agentic Workflows',
+          keyLabel: 'AI-NATIVE & AGENTIC WORKFLOWS',
+          items: ['Claude Code', 'GitHub Copilot', 'Cursor', 'Context Engineering', 'Model Context Protocol (MCP) custom server integration'],
+        },
       },
     },
     contact: {

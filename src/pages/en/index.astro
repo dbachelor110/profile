@@ -218,62 +218,19 @@ const gitDetails = [
       <div class="section-subtitle">Core capabilities & operational tech stack</div>
 
       <div class="bento-grid">
-        <!-- Languages -->
-        <div class="bento-card">
-          <div class="card-label">LANGUAGES & ENVIRONMENT</div>
-          <h3 class="card-title">{t.skills.categories.languages}</h3>
-          <div class="tech-list">
-            {
-              ['Node.js', 'TypeScript', 'JavaScript', 'SQL', 'GoLang (Familiar)'].map((skill) => (
-                <span class="tech-tag">{skill}</span>
-              ))
-            }
-          </div>
-        </div>
-
-        <!-- Frameworks -->
-        <div class="bento-card">
-          <div class="card-label">FRAMEWORKS & LIBRARIES</div>
-          <h3 class="card-title">{t.skills.categories.frameworks}</h3>
-          <div class="tech-list">
-            {
-              ['Koa.js', 'Express.js', 'React', 'Next.js', 'Astro', 'SolidJS'].map((skill) => (
-                <span class="tech-tag">{skill}</span>
-              ))
-            }
-          </div>
-        </div>
-
-        <!-- Databases & Infra -->
-        <div class="bento-card">
-          <div class="card-label">DATABASES & INFRASTRUCTURE</div>
-          <h3 class="card-title">{t.skills.categories.databases}</h3>
-          <div class="tech-list">
-            {
-              [
-                'PostgreSQL',
-                'MongoDB',
-                'Redis',
-                'Elasticsearch',
-                'Docker',
-                'Cloudflare (Workers, D1)',
-              ].map((skill) => <span class="tech-tag">{skill}</span>)
-            }
-          </div>
-        </div>
-
-        <!-- Tools & Automation -->
-        <div class="bento-card">
-          <div class="card-label">TOOLS & AUTOMATION</div>
-          <h3 class="card-title">{t.skills.categories.tools}</h3>
-          <div class="tech-list">
-            {
-              ['Git', 'CI/CD Pipelines', 'semantic-release', 'openapi-ts', 'Swagger/OpenAPI'].map(
-                (skill) => <span class="tech-tag">{skill}</span>,
-              )
-            }
-          </div>
-        </div>
+        {
+          Object.entries(t.skills.categories).map(([key, category]) => (
+            <div class={`bento-card ${key === 'aiNative' ? 'bento-card-full' : ''}`}>
+              <div class="card-label">{category.keyLabel}</div>
+              <h3 class="card-title">{category.label}</h3>
+              <div class="tech-list">
+                {category.items.map((skill) => (
+                  <span class="tech-tag">{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>

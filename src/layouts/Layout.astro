@@ -16,23 +16,6 @@ const { title = t.meta.title, description = t.meta.description } = Astro.props;
 const basePath = Astro.url.pathname.replace(/^\/en/, '') || '/';
 const isEnglish = currentLocale === 'en';
 const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : basePath}`;
-
-const skillsData = {
-  zh: [
-    { label: '程式語言與環境', value: 'Node.js, TypeScript, JavaScript, SQL, GoLang (Familiar)' },
-    { label: '開發框架與套件', value: 'Koa.js, Express.js, React, Next.js, Astro, SolidJS' },
-    { label: '資料庫與基礎設施', value: 'PostgreSQL, MongoDB, Redis, Elasticsearch, Docker, Cloudflare (Workers, D1)' },
-    { label: '開發工具與自動化', value: 'Git, CI/CD Pipelines, semantic-release, openapi-ts, Swagger/OpenAPI' },
-    { label: 'AI 原生與代理工作流', value: 'Claude Code, GitHub Copilot, Cursor, Context Engineering, Model Context Protocol (MCP) 客製伺服器整合' }
-  ],
-  en: [
-    { label: 'Languages', value: 'Node.js, TypeScript, JavaScript, SQL, GoLang (Familiar)' },
-    { label: 'Frameworks & Libraries', value: 'Koa.js, Express.js, React, Next.js, Astro, SolidJS' },
-    { label: 'Databases & Infrastructure', value: 'PostgreSQL, MongoDB, Redis, Elasticsearch, Docker, Cloudflare (Workers, D1)' },
-    { label: 'Tools & Automation', value: 'Git, CI/CD Pipelines, semantic-release, openapi-ts, Swagger/OpenAPI' },
-    { label: 'AI-Native & Agentic Workflows', value: 'Claude Code, GitHub Copilot, Cursor, Context Engineering, Model Context Protocol (MCP) custom server integration' }
-  ]
-};
 ---
 
 <!doctype html>
@@ -177,12 +160,12 @@ const skillsData = {
       </div>
 
       <div class="print-section">
-        <div class="print-section-title">{isEnglish ? "TECHNICAL SKILLS" : "專業技能"}</div>
+        <div class="print-section-title">{t.skills.title}</div>
         <div class="print-section-line"></div>
         <div class="print-skills">
-          {skillsData[currentLocale].map(skill => (
+          {Object.values(t.skills.categories).map(category => (
             <p>
-              <strong>{skill.label}:</strong> {skill.value}
+              <strong>{category.label}:</strong> {category.items.join(', ')}
             </p>
           ))}
         </div>
