@@ -721,92 +721,123 @@ footer {
 }
 
 /* Print styles */
+.print-only-resume {
+  display: none;
+}
+
+/* Print styles */
 @media print {
+  /* Hide all screen components */
+  header,
+  footer,
+  main,
+  #mobile-menu,
+  .print-exclude {
+    display: none !important;
+  }
+
   body {
     background-image: none !important;
     background-color: #ffffff !important;
     color: #000000 !important;
-    font-size: 12pt !important;
-    line-height: 1.5 !important;
-  }
-  header, .hero-actions, .nav-menu, .contact-chip svg, .print-exclude, #contact {
-    display: none !important;
-  }
-  .container {
-    max-width: 100% !important;
+    margin: 0 !important;
     padding: 0 !important;
   }
-  .section-padding {
-    padding-top: var(--space-4) !important;
-    padding-bottom: var(--space-4) !important;
-    border-bottom: 1px solid #ccc !important;
-    page-break-inside: avoid;
-  }
-  .bento-grid {
+
+  .print-only-resume {
     display: block !important;
-  }
-  .bento-card {
-    margin-bottom: var(--space-4) !important;
-    page-break-inside: avoid;
-    background-color: transparent !important;
-    border: 1px solid #999999 !important;
-    padding: var(--space-4) !important;
-  }
-  .git-timeline::before {
-    display: none !important;
-  }
-  .git-commit {
-    display: block !important;
-    padding-bottom: var(--space-4) !important;
-    page-break-inside: avoid;
-  }
-  .git-meta {
-    text-align: left !important;
-    width: auto !important;
-    font-weight: bold !important;
-    margin-bottom: var(--space-1) !important;
+    background-color: #ffffff !important;
     color: #000000 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
   }
-  .git-node {
-    display: none !important;
+
+  @page {
+    size: A4 portrait;
+    margin: 0.8in 0.6in 0.8in 0.6in;
   }
-  .git-body {
-    margin-left: 0 !important;
-    background-color: transparent !important;
-    border: 1px solid #999999 !important;
-    padding: var(--space-4) !important;
+
+  .print-header {
+    text-align: left;
+    margin-bottom: var(--space-4);
   }
-  .t-shape-grid {
-    display: block !important;
+
+  .print-name {
+    font-size: 18pt !important;
+    font-weight: 700 !important;
+    margin: 0 0 var(--space-1) 0 !important;
+    letter-spacing: -0.5px !important;
   }
-  .t-shape-col {
-    margin-bottom: var(--space-4) !important;
-    background-color: transparent !important;
-    border: 1px solid #999999 !important;
-    padding: var(--space-4) !important;
-    page-break-inside: avoid;
+
+  .print-subtitle {
+    font-size: 10pt !important;
+    color: #444444 !important;
+    margin: 0 0 var(--space-1) 0 !important;
   }
-  .contact-chips {
-    display: block !important;
+
+  .print-contact {
+    font-size: 9.5pt !important;
+    color: #555555 !important;
+    margin: 0 !important;
   }
-  .contact-chip {
-    border: none !important;
-    background: transparent !important;
-    padding: 0 !important;
-    margin-right: var(--space-4) !important;
+
+  .print-contact a {
     color: #000000 !important;
+    text-decoration: none !important;
   }
-  .commit-hash, .commit-tag {
-    display: none !important;
+
+  .print-section {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
   }
-  .section-title {
-    font-size: 16pt !important;
+
+  .print-section-title {
+    font-size: 11pt !important;
+    font-weight: 700 !important;
+    margin: 0 0 var(--space-1) 0 !important;
+    letter-spacing: 0.5px !important;
+    color: #000000 !important;
+    text-transform: uppercase !important;
+  }
+
+  .print-section-line {
+    height: 1px !important;
+    background-color: #000000 !important;
     margin-bottom: var(--space-2) !important;
   }
-  .section-subtitle {
-    font-size: 9pt !important;
-    margin-bottom: var(--space-4) !important;
-    color: #555555 !important;
+
+  .print-skills p {
+    margin: 0 0 var(--space-1) 0 !important;
+  }
+
+  .print-job {
+    margin-bottom: var(--space-4);
+    page-break-inside: avoid;
+  }
+
+  .print-job-header,
+  .print-job-subheader {
+    display: flex !important;
+    justify-content: space-between !important;
+    font-size: 10pt !important;
+    margin-bottom: var(--space-0-5) !important;
+  }
+
+  .print-job-header {
+    font-weight: bold !important;
+  }
+
+  .print-achievements {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-achievements li {
+    margin-bottom: var(--space-1-5) !important;
+    text-align: justify !important;
+    padding-left: 0 !important;
   }
 }
 

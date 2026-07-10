@@ -16,6 +16,23 @@ const { title = t.meta.title, description = t.meta.description } = Astro.props;
 const basePath = Astro.url.pathname.replace(/^\/en/, '') || '/';
 const isEnglish = currentLocale === 'en';
 const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : basePath}`;
+
+const skillsData = {
+  zh: [
+    { label: '程式語言與環境', value: 'Node.js, TypeScript, JavaScript, SQL, GoLang (Familiar)' },
+    { label: '開發框架與套件', value: 'Koa.js, Express.js, React, Next.js, Astro, SolidJS' },
+    { label: '資料庫與基礎設施', value: 'PostgreSQL, MongoDB, Redis, Elasticsearch, Docker, Cloudflare (Workers, D1)' },
+    { label: '開發工具與自動化', value: 'Git, CI/CD Pipelines, semantic-release, openapi-ts, Swagger/OpenAPI' },
+    { label: 'AI 原生與代理工作流', value: 'Claude Code, GitHub Copilot, Cursor, Context Engineering, Model Context Protocol (MCP) 客製伺服器整合' }
+  ],
+  en: [
+    { label: 'Languages', value: 'Node.js, TypeScript, JavaScript, SQL, GoLang (Familiar)' },
+    { label: 'Frameworks & Libraries', value: 'Koa.js, Express.js, React, Next.js, Astro, SolidJS' },
+    { label: 'Databases & Infrastructure', value: 'PostgreSQL, MongoDB, Redis, Elasticsearch, Docker, Cloudflare (Workers, D1)' },
+    { label: 'Tools & Automation', value: 'Git, CI/CD Pipelines, semantic-release, openapi-ts, Swagger/OpenAPI' },
+    { label: 'AI-Native & Agentic Workflows', value: 'Claude Code, GitHub Copilot, Cursor, Context Engineering, Model Context Protocol (MCP) custom server integration' }
+  ]
+};
 ---
 
 <!doctype html>
@@ -140,6 +157,85 @@ const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : baseP
         </div>
       </div>
     </footer>
+
+    <!-- Print-only resume document -->
+    <div class="print-only-resume">
+      <div class="print-header">
+        <div class="print-name">{isEnglish ? "SHANG-WEI (DAVID) LIN" : "林尚緯 (Shang-Wei Lin)"}</div>
+        <p class="print-subtitle">{isEnglish ? "Taipei, Taiwan (Open to Relocation / Remote)" : "台灣台北 (接受遠端/移居)"}</p>
+        <p class="print-contact">
+          mmaoteacher@gmail.com | +886 985-798-182 | 
+          <a href="https://www.linkedin.com/in/尚緯-林-7216b71b5" target="_blank">linkedin.com/in/David-Lin</a> | 
+          <a href="https://github.com/dbachelor110" target="_blank">github.com/dbachelor110</a>
+        </p>
+      </div>
+
+      <div class="print-section">
+        <div class="print-section-title">{isEnglish ? "PROFESSIONAL SUMMARY" : "專業總覽"}</div>
+        <div class="print-section-line"></div>
+        <p>{isEnglish ? "Senior Backend Engineer specializing in data reliability, scalable pipelines, and engineering efficiency. Passionate about tackling complex architecture bottlenecks in high-caliber teams." : "專精於數據可靠性、高併發管道與工程效率的資深後端工程師。在解決複雜的架構瓶頸與建構健壯的自動化解決方案（從多執行緒爬蟲系統到 CI/CD SDK 自動生成）方面有深厚經驗。熱衷於作為個人貢獻者 (IC) 在高效團隊中解決具挑戰性的數據基礎設施瓶頸。"}</p>
+      </div>
+
+      <div class="print-section">
+        <div class="print-section-title">{isEnglish ? "TECHNICAL SKILLS" : "專業技能"}</div>
+        <div class="print-section-line"></div>
+        <div class="print-skills">
+          {skillsData[currentLocale].map(skill => (
+            <p>
+              <strong>{skill.label}:</strong> {skill.value}
+            </p>
+          ))}
+        </div>
+      </div>
+
+      <div class="print-section">
+        <div class="print-section-title">{isEnglish ? "WORK EXPERIENCE" : "工作經歷"}</div>
+        <div class="print-section-line"></div>
+        
+        {t.resume.jobs.map(job => (
+          <div class="print-job">
+            <div class="print-job-header">
+              <span class="print-company"><strong>{job.company}</strong></span>
+              <span class="print-location">{job.location}</span>
+            </div>
+            <div class="print-job-subheader">
+              <span class="print-job-title"><em>{job.title}</em></span>
+              <span class="print-job-period"><em>{job.period}</em></span>
+            </div>
+            <ul class="print-achievements">
+              {job.achievements.map(ach => (
+                <li>
+                  {ach.includes(': ') ? (
+                    <>
+                      <strong>{ach.split(': ')[0]}:</strong>
+                      {ach.split(': ').slice(1).join(': ')}
+                    </>
+                  ) : (
+                    ach
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div class="print-section" style="page-break-inside: avoid;">
+        <div class="print-section-title">{isEnglish ? "EDUCATION" : "學歷"}</div>
+        <div class="print-section-line"></div>
+        <div class="print-job">
+          <div class="print-job-header">
+            <span class="print-company"><strong>{t.resume.education.school}</strong></span>
+          </div>
+          <div class="print-job-subheader">
+            <span class="print-job-title"><em>{t.resume.education.degree}</em></span>
+            {t.resume.education.period && (
+              <span class="print-job-period"><em>{t.resume.education.period}</em></span>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Mobile Menu Toggle Script -->
     <script>
