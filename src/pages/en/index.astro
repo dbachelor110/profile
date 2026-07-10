@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { translations } from '../../i18n/translations';
+import { getSortedExperience, formatPeriod } from '../../utils/experience';
 
 const currentLocale = 'en';
 const t = translations[currentLocale];
@@ -23,6 +24,19 @@ const gitDetails = [
   { hash: 'commit e12b40d', branch: 'origin/asgard' },
   { hash: 'commit a7641f9', branch: 'origin/mores' },
 ];
+
+import { render } from 'astro:content';
+
+const jobsEntries = await getSortedExperience('en');
+const renderedJobs = await Promise.all(
+  jobsEntries.map(async (entry) => {
+    const { Content } = await render(entry);
+    return {
+      entry,
+      Content,
+    };
+  })
+);
 ---
 
 <Layout>
@@ -243,9 +257,9 @@ const gitDetails = [
 
       <div class="git-timeline">
         {
-          t.resume.jobs.map((job, index) => (
+          renderedJobs.map(({ entry, Content }, index) => (
             <div class="git-commit">
-              <div class="git-meta">{job.period}</div>
+              <div class="git-meta">{formatPeriod(entry.data.start, entry.data.end, true)}</div>
               <div class="git-node">
                 <span class="git-dot" />
               </div>
@@ -255,16 +269,14 @@ const gitDetails = [
                     <span class="commit-hash">{gitDetails[index]?.hash || 'commit def1234'}</span>
                     <span class="commit-tag">{gitDetails[index]?.branch || 'origin/main'}</span>
                   </div>
-                  <span class="commit-location">{job.location}</span>
+                  <span class="commit-location">{entry.data.location}</span>
                 </div>
                 <div class="commit-role">
-                  {job.title} <span class="commit-org">@ {job.company}</span>
+                  {entry.data.title} <span class="commit-org">@ {entry.data.company}</span>
                 </div>
-                <ul class="commit-bullets">
-                  {job.achievements.map((achievement) => (
-                    <li>{achievement}</li>
-                  ))}
-                </ul>
+                <div class="commit-bullets">
+                  <Content />
+                </div>
               </div>
             </div>
           ))

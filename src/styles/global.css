@@ -538,7 +538,8 @@ header {
   line-height: var(--leading-body);
 }
 
-.commit-bullets {
+.commit-bullets,
+.commit-bullets ul {
   margin-top: var(--space-3);
   padding-left: var(--space-4);
   font-family: var(--font-body);
@@ -547,7 +548,8 @@ header {
   list-style-type: square;
 }
 
-.commit-bullets li {
+.commit-bullets li,
+.commit-bullets ul li {
   margin-bottom: 8px;
   line-height: 1.55;
 }
@@ -828,13 +830,15 @@ footer {
     font-weight: bold !important;
   }
 
-  .print-achievements {
+  .print-achievements,
+  .print-achievements-container ul {
     list-style: none !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  .print-achievements li {
+  .print-achievements li,
+  .print-achievements-container ul li {
     margin-bottom: var(--space-1-5) !important;
     text-align: justify !important;
     padding-left: 0 !important;

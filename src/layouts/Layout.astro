@@ -12,10 +12,24 @@ const t = translations[currentLocale as 'zh' | 'en'];
 
 const { title = t.meta.title, description = t.meta.description } = Astro.props;
 
+import { render } from 'astro:content';
+import { getSortedExperience, formatPeriod } from '../utils/experience';
+
 // Calculate current path and target path for language switcher
 const basePath = Astro.url.pathname.replace(/^\/en/, '') || '/';
 const isEnglish = currentLocale === 'en';
 const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : basePath}`;
+
+const jobsEntries = await getSortedExperience(currentLocale as 'zh' | 'en');
+const renderedJobs = await Promise.all(
+  jobsEntries.map(async (entry) => {
+    const { Content } = await render(entry);
+    return {
+      entry,
+      Content,
+    };
+  })
+);
 ---
 
 <!doctype html>
@@ -175,30 +189,19 @@ const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : baseP
         <div class="print-section-title">{t.resume.sections.experience}</div>
         <div class="print-section-line"></div>
         
-        {t.resume.jobs.map(job => (
+        {renderedJobs.map(({ entry, Content }) => (
           <div class="print-job">
             <div class="print-job-header">
-              <span class="print-company"><strong>{job.company}</strong></span>
-              <span class="print-location">{job.location}</span>
+              <span class="print-company"><strong>{entry.data.company}</strong></span>
+              <span class="print-location">{entry.data.location}</span>
             </div>
             <div class="print-job-subheader">
-              <span class="print-job-title"><em>{job.title}</em></span>
-              <span class="print-job-period"><em>{job.period}</em></span>
+              <span class="print-job-title"><em>{entry.data.title}</em></span>
+              <span class="print-job-period"><em>{formatPeriod(entry.data.start, entry.data.end, isEnglish)}</em></span>
             </div>
-            <ul class="print-achievements">
-              {job.achievements.map(ach => (
-                <li>
-                  {ach.includes(': ') ? (
-                    <>
-                      <strong>{ach.split(': ')[0]}:</strong>
-                      {ach.split(': ').slice(1).join(': ')}
-                    </>
-                  ) : (
-                    ach
-                  )}
-                </li>
-              ))}
-            </ul>
+            <div class="print-achievements-container">
+              <Content />
+            </div>
           </div>
         ))}
       </div>

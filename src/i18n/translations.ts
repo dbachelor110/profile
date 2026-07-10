@@ -72,13 +72,6 @@ export interface TranslationSchema {
       degree: string;
       period: string;
     };
-    jobs: Array<{
-      company: string;
-      location: string;
-      title: string;
-      period: string;
-      achievements: string[];
-    }>;
   };
 }
 
@@ -174,43 +167,6 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         degree: '政治學學士 (Bachelor of Arts in Political Science)',
         period: '2017 – 2021',
       },
-      jobs: [
-        {
-          company: 'Lawsnote 七法股份有限公司',
-          location: '台灣 新北市',
-          title: '後端工程師 (數據團隊)',
-          period: '2024 年 9 月 – 至今',
-          achievements: [
-            '設計並實作具備高度可擴展性的分散式爬蟲系統 (WeaverCore)，藉由架構重構與模組化設計，將原先預估需「四週/一人」的開發時程壓縮至 2 小時，並於提案當天順利完工上線。',
-            '使用 semantic-release 與 openapi-ts 設計自動化 CI/CD 流程，從 Swagger 規範動態生成並發佈 TypeScript SDK，確保端到端型別安全，免除手動串接 API 的時間成本。',
-            '設計基於 Redis 的 Proxy 管理系統，在多進程高併發執行時安全分配資源，確保系統在高峰負載下維持 99.9% 穩定度。',
-            '性能優化：設計並開發基於 JSON Lines (NDJSON) 的 HTTP 串流 (Streaming) APIs。在極端資料負載下，將前端首屏渲染時間（Time-to-Interactive）從 30 分鐘以上縮短至 1 秒內，同時將伺服器記憶體開銷優化至常數級 $O(1)$ 常駐佔用，消除了併發查詢導致的 OOM 崩潰風險。',
-            '重構核心資料管線 (Argus-v2)，將 legacy JS 爬蟲與資料寫入邏輯解耦，建構分層設計（Controller-Service-Model）的 TypeScript 資料處理系統，顯著提升系統可測試性與可擴展性。',
-            '系統監控與主動告警：搭建系統監控與主動示警機制（基於 Grafana），實現關鍵環境約 90% 的指標監控與告警覆蓋率，成功偵測並排除多個測試環境的長期異常。',
-          ],
-        },
-        {
-          company: 'Asgard 宏燁資訊股份有限公司',
-          location: '台灣 台北市',
-          title: '全端工程師',
-          period: '2023 年 4 月 – 2024 年 9 月',
-          achievements: [
-            '主導內部自動化工具從 0 到 1 的端到端開發，成功將複雜的跨部門需求轉化為可擴展的系統設計。',
-            '設計高擴展性的插件式 (plugin-based) 系統架構，實現新功能獨立部署，無需全系統重啟或停機。',
-            '建構並維護微服務架構下的平台工具，加速疊代週期並支持獨立服務擴展。',
-          ],
-        },
-        {
-          company: 'Mores.group 墨爾斯教育科技',
-          location: '台灣 高雄市',
-          title: '創辦人暨技術長 (CTO)',
-          period: '2021 年 8 月 – 2022 年 2 月',
-          achievements: [
-            '負責早期教育科技新創公司的整體技術策略、系統設計與產品路線圖規劃。',
-            '帶領工程與產品團隊研發，成功在中山創業貨櫃大賽中榮獲第一名。',
-          ],
-        },
-      ],
     },
   },
   en: {
@@ -305,43 +261,6 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         degree: 'Bachelor of Arts in Political Science',
         period: '',
       },
-      jobs: [
-        {
-          company: 'Lawsnote Inc.',
-          location: 'New Taipei, Taiwan',
-          title: 'Software Engineer (Backend, Data Team)',
-          period: 'Sep 2024 – Present',
-          achievements: [
-            'Architecture & Scaling: Designed and implemented a highly modular distributed crawler architecture (WeaverCore), compressing a projected "4-week/1-person" development schedule into 2 hours, and successfully deploying the system on the day of proposal.',
-            'Developer Experience (DX) & CI/CD: Engineered an automated CI/CD pipeline using semantic-release and openapi-ts to dynamically generate and publish TypeScript SDKs directly from Swagger specs, ensuring end-to-end type safety and eliminating manual API integration overhead.',
-            'System Reliability: Architected a Redis-based proxy management system to securely distribute resources across high-concurrency processes, ensuring 99.9% system stability during peak loads.',
-            'Performance Optimization: Designed and implemented HTTP streaming APIs using JSON Lines (NDJSON). Successfully compressed client Time-to-Interactive (TTI) from over 30 minutes to under 1 second under extreme data loads, while reducing server memory usage to an O(1) constant footprint, eliminating backend OOM risks during concurrent requests.',
-            'Maintainability & Refactoring: Refactored core data workflows (Argus-v2), decoupling database write paths from legacy JS crawlers and engineering a TypeScript data processing system with layered architecture (Controller-Service-Model) to optimize testability and scalability.',
-            'Observability & Proactive Alerting: Built a comprehensive system monitoring and proactive alerting infrastructure using Grafana, achieving ~90% alert coverage across critical environments and successfully identifying multiple long-standing anomalies.',
-          ],
-        },
-        {
-          company: 'Asgard.com.tw',
-          location: 'Taipei, Taiwan',
-          title: 'Full Stack Engineer',
-          period: 'Apr 2023 – Sep 2024',
-          achievements: [
-            'Product Delivery: Led the end-to-end development of internal automation tools from 0 to 1, translating complex cross-functional requirements into scalable system designs.',
-            'System Architecture: Architected a highly extensible plugin-based system, enabling seamless new feature deployments without requiring full-system redeployments or downtime.',
-            'Microservices Integration: Built and maintained robust platform tools utilizing a microservices architecture, driving faster iteration cycles and independent service scaling.',
-          ],
-        },
-        {
-          company: 'Mores.group',
-          location: 'Kaohsiung, Taiwan',
-          title: 'Founder & CTO',
-          period: 'Aug 2021 – Feb 2022',
-          achievements: [
-            'Technical Leadership: Spearheaded comprehensive technical strategy and product design initiatives for an early-stage education-focused technology startup.',
-            'Project Delivery: Led the engineering and product team to successfully secure 1st place in the prestigious Zhongshan Startup Container Competition.',
-          ],
-        },
-      ],
     },
   },
 };
