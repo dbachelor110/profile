@@ -331,11 +331,13 @@ const gitDetails = [
             <h3 class="education-card-title">{t.resume.education.degree}</h3>
             <p class="education-card-school">{t.resume.education.school}</p>
           </div>
-          {t.resume.education.period && (
-            <span
-              style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--muted);"
-            >{t.resume.education.period}</span>
-          )}
+          {
+            t.resume.education.period && (
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--muted);">
+                {t.resume.education.period}
+              </span>
+            )
+          }
         </div>
       </div>
     </div>
