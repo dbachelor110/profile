@@ -28,8 +28,6 @@ export interface TranslationSchema {
     title: string;
     paragraph1: string;
     paragraph2: string;
-    goalTitle: string;
-    goalText: string;
   };
   experience: {
     title: string;
@@ -43,14 +41,6 @@ export interface TranslationSchema {
       databases: string;
       tools: string;
     };
-  };
-  paradigm: {
-    title: string;
-    subtitle: string;
-    leadershipTitle: string;
-    leadershipDesc: string;
-    rigorTitle: string;
-    rigorDesc: string;
   };
   contact: {
     title: string;
@@ -110,9 +100,6 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         '我是一位專注於高規格數據基礎設施與工程工作流自動化的資深後端工程師。我擅長在追求高效能的團隊中解決關鍵架構瓶頸，例如將原本需要數週的數據處理流程優化至數小時內完成。',
       paragraph2:
         '我重視開發者體驗（DX），並藉由自動化 CI/CD、型別安全 SDK 生成及可靠的系統監控，來消除日常手動開銷。我相信好的系統應該是在保障資料一致性的同時，能讓團隊成員無痛且快速地疊代產品。',
-      goalTitle: '職涯規劃與展望',
-      goalText:
-        '我計畫在 2027 年 9 月前移居美國。目前正積極尋找支持全遠端（US Remote / Global Remote）的高規格軟體工程職缺，期望加入具備技術挑戰與卓越設計文化的團隊。',
     },
     experience: {
       title: '工作經歷',
@@ -126,16 +113,6 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         databases: '資料庫與基礎設施',
         tools: '開發工具與自動化',
       },
-    },
-    paradigm: {
-      title: 'T 型思維與教育背景',
-      subtitle: '系統性分析邏輯與技術領導力的交會點',
-      leadershipTitle: 'CTO 思維與商業對齊',
-      leadershipDesc:
-        '擁有創辦人與技術主管經驗，具備將商業願景轉化為技術路徑的核心能力。能深入理解有限資源下的工程取捨，聚焦於交付對業務具備實際價值的軟體架構，而非盲目引入不必要的系統複雜度。',
-      rigorTitle: '政治學結構化邏輯',
-      rigorDesc:
-        '政治學本質上是對於「制度設計、約束條件與利益博弈」的結構化研究。此學術訓練養成我深沉的系統思考習慣，使我在剖析分散式交易瓶頸、微服務邊界約束與多執行緒競態條件時，能建立巨觀的全局拓撲眼界與縝密的定性分析。',
     },
     contact: {
       title: '聯絡我',
@@ -164,13 +141,12 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
           title: '後端工程師 (數據團隊)',
           period: '2024 年 9 月 – 至今',
           achievements: [
-            '設計並實作高併發、多執行緒的分散式爬蟲系統 (WeaverCore)，將原本需要數週的數據擷取與處理時間縮短至數小時。',
+            '設計並實作具備高度可擴展性的分散式爬蟲系統 (WeaverCore)，藉由架構重構與模組化設計，將原先預估需「四週/一人」的開發時程壓縮至 2 小時，並於提案當天順利完工上線。',
             '使用 semantic-release 與 openapi-ts 設計自動化 CI/CD 流程，從 Swagger 規範動態生成並發佈 TypeScript SDK，確保端到端型別安全，免除手動串接 API 的時間成本。',
             '設計基於 Redis 的 Proxy 管理系統，在多進程高併發執行時安全分配資源，確保系統在高峰負載下維持 99.9% 穩定度。',
-            '開發並整合 HTTP 串流 (streaming) API，實現前端局部漸進式渲染，顯著降低大數據法律應用的感知延遲，優化用戶體驗。',
-            '實作完善的數據驗證、重試與一致性檢查機制，防止無效或損壞的數據寫入生產資料庫。',
-            '重構核心數據工作流 (Argus-v2) 並統一 API 編碼規範，有效降低團隊的偵錯開銷與長期維護成本。',
-            'Grafana Alert System: 完成覆蓋約 90% 環境同步狀況的告警機制，16 小時內從 30% 原型交付全功能，成功偵測多個已異常數月的測試環境。',
+            '性能優化：設計並開發基於 JSON Lines (NDJSON) 的 HTTP 串流 (Streaming) APIs。在極端資料負載下，將前端首屏渲染時間（Time-to-Interactive）從 30 分鐘以上縮短至 1 秒內，同時將伺服器記憶體開銷優化至常數級 $O(1)$ 常駐佔用，消除了併發查詢導致的 OOM 崩潰風險。',
+            '重構核心資料管線 (Argus-v2)，將 legacy JS 爬蟲與資料寫入邏輯解耦，建構分層設計（Controller-Service-Model）的 TypeScript 資料處理系統，顯著提升系統可測試性與可擴展性。',
+            '系統監控與主動告警：搭建系統監控與主動示警機制（基於 Grafana），實現關鍵環境約 90% 的指標監控與告警覆蓋率，成功偵測並排除多個測試環境的長期異常。',
           ],
         },
         {
@@ -224,9 +200,6 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         'I am a Senior Backend Engineer focusing on high-performance data infrastructure and automating developer workflows. I thrive in high-caliber engineering teams where I can tackle complex architectural bottlenecks—such as transforming weeks of data extraction into a matter of hours.',
       paragraph2:
         'I am deeply committed to Developer Experience (DX), utilizing automated CI/CD pipelines, type-safe API SDK generation, and robust system monitors to eliminate daily manual overhead. I believe that reliable database validation and clean coding standards allow teams to iterate faster and with absolute confidence.',
-      goalTitle: 'Career Goals & Outlook',
-      goalText:
-        'I am planning to relocate to the US by September 2027. Currently, I am actively seeking US Remote or Global Remote software engineering opportunities in forward-thinking teams that value engineering excellence and scalable systems.',
     },
     experience: {
       title: 'Work Experience',
@@ -240,16 +213,6 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         databases: 'Databases & Infra',
         tools: 'Tools & Automation',
       },
-    },
-    paradigm: {
-      title: 'The T-Shaped Paradigm & Education',
-      subtitle: 'Systemic analytical logic & leadership pedigree',
-      leadershipTitle: 'CTO Pedigree & Business Alignment',
-      leadershipDesc:
-        'Experienced as a founder and tech lead, with the core capability to translate business visions into technical roadmaps. Deeply understand engineering trade-offs under limited resources, focusing on delivering software architectures of real business value rather than blindly introducing unnecessary system complexity.',
-      rigorTitle: 'Political Science Structural Logic',
-      rigorDesc:
-        'Political science is fundamentally the structured study of system design, constraints, and strategic games. This academic training has cultivated a deep habit of systems thinking, allowing me to build a macroscopic topological perspective and rigorous qualitative analysis when analyzing distributed transaction bottlenecks, microservice constraints, and multi-threaded race conditions.',
     },
     contact: {
       title: 'Contact Me',
@@ -270,7 +233,7 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         title: 'Education',
         school: 'National Cheng Kung University | Tainan, Taiwan',
         degree: 'Bachelor of Arts in Political Science',
-        period: '2017 – 2021',
+        period: '',
       },
       jobs: [
         {
@@ -279,13 +242,12 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
           title: 'Software Engineer (Backend, Data Team)',
           period: 'Sep 2024 – Present',
           achievements: [
-            'Architecture & Scaling: Designed and implemented a high-concurrency, multi-threaded crawler architecture (WeaverCore), drastically reducing data extraction and processing time from weeks to hours.',
+            'Architecture & Scaling: Designed and implemented a highly modular distributed crawler architecture (WeaverCore), compressing a projected "4-week/1-person" development schedule into 2 hours, and successfully deploying the system on the day of proposal.',
             'Developer Experience (DX) & CI/CD: Engineered an automated CI/CD pipeline using semantic-release and openapi-ts to dynamically generate and publish TypeScript SDKs directly from Swagger specs, ensuring end-to-end type safety and eliminating manual API integration overhead.',
             'System Reliability: Architected a Redis-based proxy management system to securely distribute resources across high-concurrency processes, ensuring 99.9% system stability during peak loads.',
-            'Performance Optimization: Developed and integrated HTTP streaming APIs to enable partial frontend rendering, significantly reducing perceived latency and optimizing overall user experience.',
-            'Data Quality Assurance: Implemented robust validation, retry, and consistency-check mechanisms to prevent invalid or corrupted data from reaching production databases.',
-            'Maintainability: Refactored core data workflows (Argus-v2) and unified API coding conventions, substantially lowering debugging overhead and long-term maintenance costs.',
-            'Grafana Alert System: Delivered a comprehensive alert mechanism covering ~90% of environment sync status, built from a 30% prototype to full functionality in 16 h, successfully detecting several test environments that had been abnormal for months.',
+            'Performance Optimization: Designed and implemented HTTP streaming APIs using JSON Lines (NDJSON). Successfully compressed client Time-to-Interactive (TTI) from over 30 minutes to under 1 second under extreme data loads, while reducing server memory usage to an O(1) constant footprint, eliminating backend OOM risks during concurrent requests.',
+            'Maintainability & Refactoring: Refactored core data workflows (Argus-v2), decoupling database write paths from legacy JS crawlers and engineering a TypeScript data processing system with layered architecture (Controller-Service-Model) to optimize testability and scalability.',
+            'Observability & Proactive Alerting: Built a comprehensive system monitoring and proactive alerting infrastructure using Grafana, achieving ~90% alert coverage across critical environments and successfully identifying multiple long-standing anomalies.',
           ],
         },
         {

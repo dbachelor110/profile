@@ -29,9 +29,6 @@ describe('i18n translations integrity', () => {
       Object.keys(translations.en.skills.categories),
     );
 
-    // Paradigm subkeys
-    expect(Object.keys(translations.zh.paradigm)).toEqual(Object.keys(translations.en.paradigm));
-
     // Contact subkeys
     expect(Object.keys(translations.zh.contact)).toEqual(Object.keys(translations.en.contact));
   });

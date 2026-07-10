@@ -27,7 +27,7 @@ test.describe('Shang-Wei (David) Lin Portfolio Site E2E Tests', () => {
     await expect(page).toHaveURL(/\/en/);
 
     // Verify English title & contents
-    await expect(page).toHaveTitle(/David Lin/);
+    await expect(page).toHaveTitle(/David.*Lin/);
     await expect(page.locator('h1')).toContainText('David Lin');
     await expect(page.locator('h2')).toContainText('Senior Backend Engineer');
 
