@@ -147,7 +147,7 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
             '開發並整合 HTTP 串流 (streaming) API，實現前端局部漸進式渲染，顯著降低大數據法律應用的感知延遲，優化用戶體驗。',
             '實作完善的數據驗證、重試與一致性檢查機制，防止無效或損壞的數據寫入生產資料庫。',
             '重構核心數據工作流 (Argus-v2) 並統一 API 編碼規範，有效降低團隊的偵錯開銷與長期維護成本。',
-            'Grafana Alert System: 完成覆蓋約 90% 環境同步狀況的告警機制，16 小時內從 30% 原型交付全功能，成功偵測多個已異常數月的測試環境。',
+            '系統監控與主動告警：搭建系統監控與主動示警機制（基於 Grafana），實現關鍵環境約 90% 的指標監控與告警覆蓋率，成功偵測並排除多個測試環境的長期異常。',
           ],
         },
         {
@@ -249,7 +249,7 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
             'Performance Optimization: Developed and integrated HTTP streaming APIs to enable partial frontend rendering, significantly reducing perceived latency and optimizing overall user experience.',
             'Data Quality Assurance: Implemented robust validation, retry, and consistency-check mechanisms to prevent invalid or corrupted data from reaching production databases.',
             'Maintainability: Refactored core data workflows (Argus-v2) and unified API coding conventions, substantially lowering debugging overhead and long-term maintenance costs.',
-            'Grafana Alert System: Delivered a comprehensive alert mechanism covering ~90% of environment sync status, built from a 30% prototype to full functionality in 16 h, successfully detecting several test environments that had been abnormal for months.',
+            'Observability & Proactive Alerting: Built a comprehensive system monitoring and proactive alerting infrastructure using Grafana, achieving ~90% alert coverage across critical environments and successfully identifying multiple long-standing anomalies.',
           ],
         },
         {
