@@ -141,7 +141,7 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
           title: '後端工程師 (數據團隊)',
           period: '2024 年 9 月 – 至今',
           achievements: [
-            '設計並實作高併發、多執行緒的分散式爬蟲系統 (WeaverCore)，將原本需要數週的數據擷取與處理時間縮短至數小時。',
+            '設計並實作具備高度可擴展性的分散式爬蟲系統 (WeaverCore)，藉由架構重構與模組化設計，將原先預估需「四週/一人」的開發時程壓縮至 2 小時，並於提案當天順利完工上線。',
             '使用 semantic-release 與 openapi-ts 設計自動化 CI/CD 流程，從 Swagger 規範動態生成並發佈 TypeScript SDK，確保端到端型別安全，免除手動串接 API 的時間成本。',
             '設計基於 Redis 的 Proxy 管理系統，在多進程高併發執行時安全分配資源，確保系統在高峰負載下維持 99.9% 穩定度。',
             '開發並整合 HTTP 串流 (streaming) API，實現前端局部漸進式渲染，顯著降低大數據法律應用的感知延遲，優化用戶體驗。',
@@ -243,7 +243,7 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
           title: 'Software Engineer (Backend, Data Team)',
           period: 'Sep 2024 – Present',
           achievements: [
-            'Architecture & Scaling: Designed and implemented a high-concurrency, multi-threaded crawler architecture (WeaverCore), drastically reducing data extraction and processing time from weeks to hours.',
+            'Architecture & Scaling: Designed and implemented a highly modular distributed crawler architecture (WeaverCore), compressing a projected "4-week/1-person" development schedule into 2 hours, and successfully deploying the system on the day of proposal.',
             'Developer Experience (DX) & CI/CD: Engineered an automated CI/CD pipeline using semantic-release and openapi-ts to dynamically generate and publish TypeScript SDKs directly from Swagger specs, ensuring end-to-end type safety and eliminating manual API integration overhead.',
             'System Reliability: Architected a Redis-based proxy management system to securely distribute resources across high-concurrency processes, ensuring 99.9% system stability during peak loads.',
             'Performance Optimization: Developed and integrated HTTP streaming APIs to enable partial frontend rendering, significantly reducing perceived latency and optimizing overall user experience.',
