@@ -7,7 +7,7 @@ interface Props {
   description?: string;
 }
 
-const currentLocale = Astro.currentLocale || 'zh';
+const currentLocale = Astro.url.pathname.startsWith('/en') ? 'en' : 'zh';
 const t = translations[currentLocale as 'zh' | 'en'];
 
 const { title = t.meta.title, description = t.meta.description } = Astro.props;
