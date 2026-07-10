@@ -28,8 +28,6 @@ export interface TranslationSchema {
     title: string;
     paragraph1: string;
     paragraph2: string;
-    goalTitle: string;
-    goalText: string;
   };
   experience: {
     title: string;
@@ -102,9 +100,6 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         '我是一位專注於高規格數據基礎設施與工程工作流自動化的資深後端工程師。我擅長在追求高效能的團隊中解決關鍵架構瓶頸，例如將原本需要數週的數據處理流程優化至數小時內完成。',
       paragraph2:
         '我重視開發者體驗（DX），並藉由自動化 CI/CD、型別安全 SDK 生成及可靠的系統監控，來消除日常手動開銷。我相信好的系統應該是在保障資料一致性的同時，能讓團隊成員無痛且快速地疊代產品。',
-      goalTitle: '職涯規劃與展望',
-      goalText:
-        '我計畫在 2027 年 9 月前移居美國。目前正積極尋找支持全遠端（US Remote / Global Remote）的高規格軟體工程職缺，期望加入具備技術挑戰與卓越設計文化的團隊。',
     },
     experience: {
       title: '工作經歷',
@@ -206,9 +201,6 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         'I am a Senior Backend Engineer focusing on high-performance data infrastructure and automating developer workflows. I thrive in high-caliber engineering teams where I can tackle complex architectural bottlenecks—such as transforming weeks of data extraction into a matter of hours.',
       paragraph2:
         'I am deeply committed to Developer Experience (DX), utilizing automated CI/CD pipelines, type-safe API SDK generation, and robust system monitors to eliminate daily manual overhead. I believe that reliable database validation and clean coding standards allow teams to iterate faster and with absolute confidence.',
-      goalTitle: 'Career Goals & Outlook',
-      goalText:
-        'I am planning to relocate to the US by September 2027. Currently, I am actively seeking US Remote or Global Remote software engineering opportunities in forward-thinking teams that value engineering excellence and scalable systems.',
     },
     experience: {
       title: 'Work Experience',
