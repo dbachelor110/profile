@@ -48,24 +48,7 @@ const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : baseP
     <header data-od-id="nav-header">
       <div class="nav-container">
         <a href={isEnglish ? '/en' : '/'} class="brand-logo" data-od-id="nav-brand">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M4 4H8M4 4V20M4 20H8"
-              stroke="var(--accent)"
-              stroke-width="2"
-              stroke-linecap="round"></path>
-            <path
-              d="M9 16V8L12 12L15 8V16"
-              stroke="var(--fg)"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-            <path
-              d="M20 4H16M20 4V20M20 20H16"
-              stroke="var(--accent)"
-              stroke-width="2"
-              stroke-linecap="round"></path>
-          </svg>
+          <img src="/favicon.png" alt="D. LIN Logo" />
           <span>D. LIN</span>
         </a>
 
