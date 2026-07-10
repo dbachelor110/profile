@@ -233,7 +233,7 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         title: 'Education',
         school: 'National Cheng Kung University | Tainan, Taiwan',
         degree: 'Bachelor of Arts in Political Science',
-        period: '2017 – 2021',
+        period: '',
       },
       jobs: [
         {
