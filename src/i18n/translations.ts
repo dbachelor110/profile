@@ -44,14 +44,6 @@ export interface TranslationSchema {
       tools: string;
     };
   };
-  paradigm: {
-    title: string;
-    subtitle: string;
-    leadershipTitle: string;
-    leadershipDesc: string;
-    rigorTitle: string;
-    rigorDesc: string;
-  };
   contact: {
     title: string;
     subtitle: string;
@@ -126,16 +118,6 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         databases: '資料庫與基礎設施',
         tools: '開發工具與自動化',
       },
-    },
-    paradigm: {
-      title: 'T 型思維與教育背景',
-      subtitle: '系統性分析邏輯與技術領導力的交會點',
-      leadershipTitle: 'CTO 思維與商業對齊',
-      leadershipDesc:
-        '擁有創辦人與技術主管經驗，具備將商業願景轉化為技術路徑的核心能力。能深入理解有限資源下的工程取捨，聚焦於交付對業務具備實際價值的軟體架構，而非盲目引入不必要的系統複雜度。',
-      rigorTitle: '政治學結構化邏輯',
-      rigorDesc:
-        '政治學本質上是對於「制度設計、約束條件與利益博弈」的結構化研究。此學術訓練養成我深沉的系統思考習慣，使我在剖析分散式交易瓶頸、微服務邊界約束與多執行緒競態條件時，能建立巨觀的全局拓撲眼界與縝密的定性分析。',
     },
     contact: {
       title: '聯絡我',
@@ -240,16 +222,6 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         databases: 'Databases & Infra',
         tools: 'Tools & Automation',
       },
-    },
-    paradigm: {
-      title: 'The T-Shaped Paradigm & Education',
-      subtitle: 'Systemic analytical logic & leadership pedigree',
-      leadershipTitle: 'CTO Pedigree & Business Alignment',
-      leadershipDesc:
-        'Experienced as a founder and tech lead, with the core capability to translate business visions into technical roadmaps. Deeply understand engineering trade-offs under limited resources, focusing on delivering software architectures of real business value rather than blindly introducing unnecessary system complexity.',
-      rigorTitle: 'Political Science Structural Logic',
-      rigorDesc:
-        'Political science is fundamentally the structured study of system design, constraints, and strategic games. This academic training has cultivated a deep habit of systems thinking, allowing me to build a macroscopic topological perspective and rigorous qualitative analysis when analyzing distributed transaction bottlenecks, microservice constraints, and multi-threaded race conditions.',
     },
     contact: {
       title: 'Contact Me',

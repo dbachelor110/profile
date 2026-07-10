@@ -37,7 +37,7 @@ describe('POST /api/contact', () => {
 
     const response = await POST({ request } as unknown as APIContext);
     expect(response.status).toBe(400);
-    const data = await response.json();
+    const data = (await response.json()) as { error?: string; success?: boolean };
     expect(data.error).toBe('RESEND_API_KEY Not Setted');
   });
 
@@ -52,7 +52,7 @@ describe('POST /api/contact', () => {
 
     const response = await POST({ request } as unknown as APIContext);
     expect(response.status).toBe(400);
-    const data = await response.json();
+    const data = (await response.json()) as { error?: string; success?: boolean };
     expect(data.error).toBe('Name, email, and message are required.');
   });
 
@@ -68,7 +68,7 @@ describe('POST /api/contact', () => {
 
     const response = await POST({ request } as unknown as APIContext);
     expect(response.status).toBe(400);
-    const data = await response.json();
+    const data = (await response.json()) as { error?: string; success?: boolean };
     expect(data.error).toBe('Invalid email address.');
   });
 
@@ -84,7 +84,7 @@ describe('POST /api/contact', () => {
 
     const response = await POST({ request } as unknown as APIContext);
     expect(response.status).toBe(200);
-    const data = await response.json();
+    const data = (await response.json()) as { error?: string; success?: boolean };
     expect(data.success).toBe(true);
     expect(sendEmail).toHaveBeenCalledWith(
       expect.any(String),
@@ -108,7 +108,7 @@ describe('POST /api/contact', () => {
 
     const response = await POST({ request } as unknown as APIContext);
     expect(response.status).toBe(500);
-    const data = await response.json();
+    const data = (await response.json()) as { error?: string; success?: boolean };
     expect(data.error).toBe('Internal server error.');
   });
 });
