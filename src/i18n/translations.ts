@@ -124,7 +124,14 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         databases: {
           label: '資料庫與基礎設施',
           keyLabel: 'DATABASES & INFRASTRUCTURE',
-          items: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'Docker', 'Cloudflare (Workers, D1)'],
+          items: [
+            'PostgreSQL',
+            'MongoDB',
+            'Redis',
+            'Elasticsearch',
+            'Docker',
+            'Cloudflare (Workers, D1)',
+          ],
         },
         tools: {
           label: '開發工具與自動化',
@@ -134,7 +141,13 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         aiNative: {
           label: 'AI 原生與代理工作流',
           keyLabel: 'AI-NATIVE & AGENTIC WORKFLOWS',
-          items: ['Claude Code', 'GitHub Copilot', 'Cursor', 'Context Engineering', 'Model Context Protocol (MCP) 客製伺服器整合'],
+          items: [
+            'Claude Code',
+            'GitHub Copilot',
+            'Cursor',
+            'Context Engineering',
+            'Model Context Protocol (MCP) 客製伺服器整合',
+          ],
         },
       },
     },
@@ -154,7 +167,8 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
     resume: {
       name: '林尚緯 (Shang-Wei Lin)',
       location: '台灣台北 (接受遠端/移居)',
-      summary: '專精於數據可靠性、高併發管道與工程效率的資深後端工程師。在解決複雜的架構瓶頸與建構健壯的自動化解決方案（從多執行緒爬蟲系統到 CI/CD SDK 自動生成）方面有深厚經驗。熱衷於作為個人貢獻者 (IC) 在高效團隊中解決具挑戰性的數據基礎設施瓶頸。',
+      summary:
+        '專精於數據可靠性、高併發管道與工程效率的資深後端工程師。在解決複雜的架構瓶頸與建構健壯的自動化解決方案（從多執行緒爬蟲系統到 CI/CD SDK 自動生成）方面有深厚經驗。熱衷於作為個人貢獻者 (IC) 在高效團隊中解決具挑戰性的數據基礎設施瓶頸。',
       sections: {
         summary: '專業總覽',
         skills: '專業技能',
@@ -217,7 +231,14 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         databases: {
           label: 'Databases & Infra',
           keyLabel: 'DATABASES & INFRASTRUCTURE',
-          items: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'Docker', 'Cloudflare (Workers, D1)'],
+          items: [
+            'PostgreSQL',
+            'MongoDB',
+            'Redis',
+            'Elasticsearch',
+            'Docker',
+            'Cloudflare (Workers, D1)',
+          ],
         },
         tools: {
           label: 'Tools & Automation',
@@ -227,7 +248,13 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
         aiNative: {
           label: 'AI-Native & Agentic Workflows',
           keyLabel: 'AI-NATIVE & AGENTIC WORKFLOWS',
-          items: ['Claude Code', 'GitHub Copilot', 'Cursor', 'Context Engineering', 'Model Context Protocol (MCP) custom server integration'],
+          items: [
+            'Claude Code',
+            'GitHub Copilot',
+            'Cursor',
+            'Context Engineering',
+            'Model Context Protocol (MCP) custom server integration',
+          ],
         },
       },
     },
@@ -248,7 +275,8 @@ export const translations: Record<'zh' | 'en', TranslationSchema> = {
     resume: {
       name: 'SHANG-WEI (DAVID) LIN',
       location: 'Taipei, Taiwan (Open to Relocation / Remote)',
-      summary: 'Senior Backend Engineer specializing in data reliability, scalable pipelines, and engineering efficiency. Passionate about tackling complex architecture bottlenecks in high-caliber teams.',
+      summary:
+        'Senior Backend Engineer specializing in data reliability, scalable pipelines, and engineering efficiency. Passionate about tackling complex architecture bottlenecks in high-caliber teams.',
       sections: {
         summary: 'PROFESSIONAL SUMMARY',
         skills: 'TECHNICAL SKILLS',

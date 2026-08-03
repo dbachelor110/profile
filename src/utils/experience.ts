@@ -1,11 +1,28 @@
 import { getCollection } from 'astro:content';
 
-export function formatPeriod(start: number, end: number | null | undefined, isEnglish: boolean): string {
+export function formatPeriod(
+  start: number,
+  end: number | null | undefined,
+  isEnglish: boolean,
+): string {
   const formatMonthYear = (val: number): string => {
     const year = Math.floor(val / 100);
     const monthNum = val % 100;
     if (isEnglish) {
-      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ];
       return `${months[monthNum - 1]} ${cleanYearString(year)}`;
     } else {
       return `${year}年${monthNum}月`;

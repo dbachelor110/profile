@@ -28,7 +28,7 @@ const renderedJobs = await Promise.all(
       entry,
       Content,
     };
-  })
+  }),
 );
 ---
 
@@ -161,8 +161,10 @@ const renderedJobs = await Promise.all(
         <div class="print-name">{t.resume.name}</div>
         <p class="print-subtitle">{t.resume.location}</p>
         <p class="print-contact">
-          mmaoteacher@gmail.com | +886 985-798-182 | 
-          <a href="https://www.linkedin.com/in/尚緯-林-7216b71b5" target="_blank">linkedin.com/in/David-Lin</a> | 
+          mmaoteacher@gmail.com | +886 985-798-182 |
+          <a href="https://www.linkedin.com/in/尚緯-林-7216b71b5" target="_blank"
+            >linkedin.com/in/David-Lin</a
+          > |
           <a href="https://github.com/dbachelor110" target="_blank">github.com/dbachelor110</a>
         </p>
       </div>
@@ -177,33 +179,43 @@ const renderedJobs = await Promise.all(
         <div class="print-section-title">{t.skills.title}</div>
         <div class="print-section-line"></div>
         <div class="print-skills">
-          {Object.values(t.skills.categories).map(category => (
-            <p>
-              <strong>{category.label}:</strong> {category.items.join(', ')}
-            </p>
-          ))}
+          {
+            Object.values(t.skills.categories).map((category) => (
+              <p>
+                <strong>{category.label}:</strong> {category.items.join(', ')}
+              </p>
+            ))
+          }
         </div>
       </div>
 
       <div class="print-section">
         <div class="print-section-title">{t.resume.sections.experience}</div>
         <div class="print-section-line"></div>
-        
-        {renderedJobs.map(({ entry, Content }) => (
-          <div class="print-job">
-            <div class="print-job-header">
-              <span class="print-company"><strong>{entry.data.company}</strong></span>
-              <span class="print-location">{entry.data.location}</span>
+
+        {
+          renderedJobs.map(({ entry, Content }) => (
+            <div class="print-job">
+              <div class="print-job-header">
+                <span class="print-company">
+                  <strong>{entry.data.company}</strong>
+                </span>
+                <span class="print-location">{entry.data.location}</span>
+              </div>
+              <div class="print-job-subheader">
+                <span class="print-job-title">
+                  <em>{entry.data.title}</em>
+                </span>
+                <span class="print-job-period">
+                  <em>{formatPeriod(entry.data.start, entry.data.end, isEnglish)}</em>
+                </span>
+              </div>
+              <div class="print-achievements-container">
+                <Content />
+              </div>
             </div>
-            <div class="print-job-subheader">
-              <span class="print-job-title"><em>{entry.data.title}</em></span>
-              <span class="print-job-period"><em>{formatPeriod(entry.data.start, entry.data.end, isEnglish)}</em></span>
-            </div>
-            <div class="print-achievements-container">
-              <Content />
-            </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
 
       <div class="print-section" style="page-break-inside: avoid;">
@@ -215,9 +227,13 @@ const renderedJobs = await Promise.all(
           </div>
           <div class="print-job-subheader">
             <span class="print-job-title"><em>{t.resume.education.degree}</em></span>
-            {t.resume.education.period && (
-              <span class="print-job-period"><em>{t.resume.education.period}</em></span>
-            )}
+            {
+              t.resume.education.period && (
+                <span class="print-job-period">
+                  <em>{t.resume.education.period}</em>
+                </span>
+              )
+            }
           </div>
         </div>
       </div>

@@ -6,8 +6,8 @@ function parseFrontmatter(fileContent: string) {
   const match = fileContent.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return null;
   const yaml = match[1];
-  const data: Record<string, any> = {};
-  yaml.split('\n').forEach(line => {
+  const data: Record<string, string | number | null> = {};
+  yaml.split('\n').forEach((line) => {
     // Strip comments
     const cleanLine = line.split('#')[0].trim();
     if (!cleanLine) return;
@@ -40,14 +40,18 @@ describe('Work Experience i18n Symmetry Validation', () => {
     expect(fs.existsSync(enDir)).toBe(true);
   });
 
-  const zhFiles = fs.existsSync(zhDir) ? fs.readdirSync(zhDir).filter(f => f.endsWith('.md')) : [];
-  const enFiles = fs.existsSync(enDir) ? fs.readdirSync(enDir).filter(f => f.endsWith('.md')) : [];
+  const zhFiles = fs.existsSync(zhDir)
+    ? fs.readdirSync(zhDir).filter((f) => f.endsWith('.md'))
+    : [];
+  const enFiles = fs.existsSync(enDir)
+    ? fs.readdirSync(enDir).filter((f) => f.endsWith('.md'))
+    : [];
 
   it('should have exactly matching file names in both zh and en collections', () => {
     expect(zhFiles.sort()).toEqual(enFiles.sort());
   });
 
-  zhFiles.forEach(filename => {
+  zhFiles.forEach((filename) => {
     describe(`Experience File: ${filename}`, () => {
       it('should exist in both folders and have symmetric structures', () => {
         const zhFilePath = path.join(zhDir, filename);
@@ -68,8 +72,15 @@ describe('Work Experience i18n Symmetry Validation', () => {
         if (zhMeta && enMeta) {
           // Validate company, location, title, start, end are defined and typed properly
           expect(typeof zhMeta.company).toBe('string');
+          if (typeof zhMeta.company !== 'string') {
+            throw Error('zhMeta.company not string');
+          }
           expect(zhMeta.company.trim()).not.toBe('');
+
           expect(typeof enMeta.company).toBe('string');
+          if (typeof enMeta.company !== 'string') {
+            throw Error('enMeta.company not string');
+          }
           expect(enMeta.company.trim()).not.toBe('');
 
           expect(typeof zhMeta.location).toBe('string');
@@ -79,6 +90,9 @@ describe('Work Experience i18n Symmetry Validation', () => {
           expect(typeof enMeta.title).toBe('string');
 
           expect(typeof zhMeta.start).toBe('number');
+          if (typeof zhMeta.start !== 'number') {
+            throw Error('zhMeta.start not number');
+          }
           expect(zhMeta.start).toBeGreaterThan(190000);
           expect(zhMeta.start).toBeLessThan(210000);
 

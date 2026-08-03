@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { APIContext } from 'astro';
-import { POST } from './contact';
+import { POST } from '../pages/api/contact';
 
 // Mock getSecret from astro:env/server
 vi.mock('astro:env/server', () => ({
