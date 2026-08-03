@@ -12,10 +12,24 @@ const t = translations[currentLocale as 'zh' | 'en'];
 
 const { title = t.meta.title, description = t.meta.description } = Astro.props;
 
+import { render } from 'astro:content';
+import { getSortedExperience, formatPeriod } from '../utils/experience';
+
 // Calculate current path and target path for language switcher
 const basePath = Astro.url.pathname.replace(/^\/en/, '') || '/';
 const isEnglish = currentLocale === 'en';
 const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : basePath}`;
+
+const jobsEntries = await getSortedExperience(currentLocale as 'zh' | 'en');
+const renderedJobs = await Promise.all(
+  jobsEntries.map(async (entry) => {
+    const { Content } = await render(entry);
+    return {
+      entry,
+      Content,
+    };
+  }),
+);
 ---
 
 <!doctype html>
@@ -66,7 +80,7 @@ const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : baseP
             class="nav-link"
             style="border: 1px solid var(--border); padding: 4px 10px; border-radius: var(--radius-sm);"
           >
-            {isEnglish ? '繁體中文' : 'English'}
+            {t.langSwitch.desktop}
           </a>
         </nav>
 
@@ -78,7 +92,7 @@ const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : baseP
             class="nav-link"
             style="border: 1px solid var(--border); padding: 4px 8px; border-radius: var(--radius-sm);"
           >
-            {isEnglish ? '中' : 'EN'}
+            {t.langSwitch.mobile}
           </a>
 
           <button
@@ -140,6 +154,90 @@ const langSwitchUrl = isEnglish ? basePath : `/en${basePath === '/' ? '' : baseP
         </div>
       </div>
     </footer>
+
+    <!-- Print-only resume document -->
+    <div class="print-only-resume">
+      <div class="print-header">
+        <div class="print-name">{t.resume.name}</div>
+        <p class="print-subtitle">{t.resume.location}</p>
+        <p class="print-contact">
+          mmaoteacher@gmail.com | +886 985-798-182 |
+          <a href="https://www.linkedin.com/in/尚緯-林-7216b71b5" target="_blank"
+            >linkedin.com/in/David-Lin</a
+          > |
+          <a href="https://github.com/dbachelor110" target="_blank">github.com/dbachelor110</a>
+        </p>
+      </div>
+
+      <div class="print-section">
+        <div class="print-section-title">{t.resume.sections.summary}</div>
+        <div class="print-section-line"></div>
+        <p>{t.resume.summary}</p>
+      </div>
+
+      <div class="print-section">
+        <div class="print-section-title">{t.skills.title}</div>
+        <div class="print-section-line"></div>
+        <div class="print-skills">
+          {
+            Object.values(t.skills.categories).map((category) => (
+              <p>
+                <strong>{category.label}:</strong> {category.items.join(', ')}
+              </p>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="print-section">
+        <div class="print-section-title">{t.resume.sections.experience}</div>
+        <div class="print-section-line"></div>
+
+        {
+          renderedJobs.map(({ entry, Content }) => (
+            <div class="print-job">
+              <div class="print-job-header">
+                <span class="print-company">
+                  <strong>{entry.data.company}</strong>
+                </span>
+                <span class="print-location">{entry.data.location}</span>
+              </div>
+              <div class="print-job-subheader">
+                <span class="print-job-title">
+                  <em>{entry.data.title}</em>
+                </span>
+                <span class="print-job-period">
+                  <em>{formatPeriod(entry.data.start, entry.data.end, isEnglish)}</em>
+                </span>
+              </div>
+              <div class="print-achievements-container">
+                <Content />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="print-section" style="page-break-inside: avoid;">
+        <div class="print-section-title">{t.resume.sections.education}</div>
+        <div class="print-section-line"></div>
+        <div class="print-job">
+          <div class="print-job-header">
+            <span class="print-company"><strong>{t.resume.education.school}</strong></span>
+          </div>
+          <div class="print-job-subheader">
+            <span class="print-job-title"><em>{t.resume.education.degree}</em></span>
+            {
+              t.resume.education.period && (
+                <span class="print-job-period">
+                  <em>{t.resume.education.period}</em>
+                </span>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Mobile Menu Toggle Script -->
     <script>

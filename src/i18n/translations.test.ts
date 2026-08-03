@@ -32,18 +32,4 @@ describe('i18n translations integrity', () => {
     // Contact subkeys
     expect(Object.keys(translations.zh.contact)).toEqual(Object.keys(translations.en.contact));
   });
-
-  it('should contain jobs in resume with same count and schema', () => {
-    expect(translations.zh.resume.jobs.length).toBe(translations.en.resume.jobs.length);
-    expect(translations.zh.resume.jobs.length).toBeGreaterThan(0);
-
-    for (let i = 0; i < translations.zh.resume.jobs.length; i++) {
-      const zhJob = translations.zh.resume.jobs[i];
-      const enJob = translations.en.resume.jobs[i];
-
-      expect(zhJob.company).toBeDefined();
-      expect(enJob.company).toBeDefined();
-      expect(zhJob.achievements.length).toBe(enJob.achievements.length);
-    }
-  });
 });
